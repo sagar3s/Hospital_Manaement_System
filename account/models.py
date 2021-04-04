@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+import datetime
 DEPARTMENT= (
     (1, 'Eye Care'),
     (2, 'Skin Care'),
@@ -30,10 +30,6 @@ class Doctor(models.Model):
     contact = models.CharField(max_length=20,null=True)
     gender = models.PositiveSmallIntegerField(
         choices=GENDER_CHOICE, default=3)
-    STATUS = (
-        (1, 'Active'),
-        (0, 'Not_Active'),
-    )
     address = models.CharField(max_length=40)
     department= models.CharField(max_length=50,choices=DEPARTMENT,default='6')
     status=models.BooleanField(default=False)
@@ -64,3 +60,11 @@ class Patient(models.Model):
         return self.user.id
     def __str__(self):
         return self.user.first_name+" ("+self.symptoms+")"
+class Appointment:
+    patient=models.ForeignKey(Patient, null=True, on_delete=models.CASCADE)
+    Doctor=models.ForeignKey(Doctor, null=True, on_delete=models.CASCADE)
+    appt_date=models.DateField(("Date"),default=datetime.date.today)
+    symptoms=models.CharField(max_length=100, null=True)
+    status=models.BooleanField(default=False)
+
+
