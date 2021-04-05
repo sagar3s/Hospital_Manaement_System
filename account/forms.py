@@ -2,7 +2,7 @@ from django import forms
 from . import models
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-class UserRegisterForm(UserCreationForm):
+class Registration_Form(UserCreationForm):
     user_choice = (
         (1, 'doctor'),
         (2, 'patient'),
