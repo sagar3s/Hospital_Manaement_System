@@ -27,7 +27,6 @@ SECRET_KEY = ')tm72n--g+f&if%dcvx4i@$3llvt+!#k9kbpr^2hnrrhbtrxhm'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'account.User'
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,10 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'crispy_forms',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

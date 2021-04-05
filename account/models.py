@@ -1,23 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 import datetime
-
-class User(AbstractUser):
-    user_types = (
-        (1, 'doctor'),
-        (2, 'patient'),
-        (3, 'hos_admin'),
-    )
-    user_choice = models.PositiveSmallIntegerField(
-        choices=user_types, default=1)
-
 DEPARTMENT= (
     (1, 'Eye Care'),
     (2, 'Skin Care'),
     (3, 'Surgery'),
     (4, 'Physical Therapy'),
     (5, 'Dental'),
-    (6, 'General')
+    (6, 'General'),
+    (7, 'Cardiology')
 )
 GENDER_CHOICE = (
     (1, 'Female'),
@@ -72,10 +63,8 @@ class Doctor(models.Model):
         return self.user.id
     def __str__(self):
         return "{} ({})".format(self.user.first_name,self.department)
-
-
         
-class Appointment:
+class Appointment(models.Model):
     patient=models.ForeignKey(Patient, null=True, on_delete=models.CASCADE)
     Doctor=models.ForeignKey(Doctor, null=True, on_delete=models.CASCADE)
     appt_date=models.DateField(("Date"),default=datetime.date.today)

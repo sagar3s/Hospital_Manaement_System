@@ -1,27 +1,35 @@
 from django import forms
-from . import models
+from .models import Patient, Doctor
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-class Registration_Form(UserCreationForm):
-    user_choice = (
-        (1, 'doctor'),
-        (2, 'patient'),
-    )
-    email = forms.EmailField()
-    user_type = forms.ChoiceField(choices=user_choice, widget=forms.RadioSelect)
-
+class AdminSigupForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = [
-            'first_name','last_name','username','email','password1','password2','user_type',
-        ]
+        model=User
+        fields=['first_name','last_name','username','password']
+        widgets = {
+        'password': forms.PasswordInput()
+        }
+class PatientUserForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','email','password']
+        widgets = {
+        'password': forms.PasswordInput()
+        }
 
 class PatientSignupForm(forms.ModelForm):
     class Meta:
-        model = models.Patient
+        model = Patient
         fields = ('Address', 'Phone', 'gender','blood_group', 'age','status')
 
+class DoctorUserForm(forms.ModelForm):
+    class Meta:
+        model= User
+        fields=['first_name','last_name','username','email','password']
+        widgets = {
+        'password': forms.PasswordInput()
+        }
 class DoctorSignupForm(forms.ModelForm):
     class Meta:
-        model = models.Doctor
+        model = Doctor
         fields = ('address','contact','department','status','profile_pic','gender')
