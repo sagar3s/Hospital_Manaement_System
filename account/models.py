@@ -46,8 +46,7 @@ class Patient(models.Model):
     @property
     def get_id(self):
         return self.user.id
-    def __str__(self):
-        return self.user.first_name+" ("+self.symptoms+")"
+
 
 class Doctor(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -56,7 +55,7 @@ class Doctor(models.Model):
     gender = models.PositiveSmallIntegerField(
         choices=GENDER_CHOICE, default=3)
     address = models.CharField(max_length=40)
-    department= models.CharField(max_length=50,choices=DEPARTMENT,default='6')
+    department= models.IntegerField(choices=DEPARTMENT,default='6')
     status=models.BooleanField(default=False)
     @property
     def get_name(self):

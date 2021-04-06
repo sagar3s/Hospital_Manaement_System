@@ -1,0 +1,13 @@
+
+
+{% load widget_tweaks %}
+
+  <!--- signup page for doctor by admin(sumit)  ---------->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{form1.as_p}}
+        {{form2.as_p}}
+          <button type="submit" class="btnSubmit">Register</button>
+
+  </form>
+

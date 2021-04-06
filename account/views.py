@@ -5,10 +5,10 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from datetime import datetime,timedelta,date
 from django.db.models import Sum
 from django.contrib.auth.models import Group
-from django.shortcuts import render,redirect,reverse
-
+from django.shortcuts import render,redirect,reverse,HttpResponse
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate,login
 # Create your views here.
 def homepage(request):
     if request.user.is_authenticated:
@@ -30,12 +30,7 @@ def signup_admin(request):
     return render(request,'admin_signup.html', {'form':form,})
 
 def signup_doctor(request):
-    form1=forms.DoctorUserForm()
-    form2=forms.DoctorSignupForm()
-    doctor_form={
-        'form1':form1,
-        'form2':form2
-    }
+
     if request.method == "POST":
         form1=forms.DoctorUserForm(request.POST)
         form2=forms.DoctorSignupForm(request.POST)
@@ -48,16 +43,13 @@ def signup_doctor(request):
             doc_details=doc_details.save()
             doc_grp=Group.objects.get_or_create(name="doctor")
             doc_grp[0].user_set.add(user)
-        return HttpResponseRedirect('doctorlogin')
-    return render(request,'signup_doctor.html',context=doctor_form)
+            return HttpResponse("Successfully Registered Now login to access Doctor Dashboard")
+    else:
+        form1=forms.DoctorUserForm()
+        form2=forms.DoctorSignupForm()
+    return render(request,'signup_doctor.html',{'form1': form1, 'form2': form2, })
 
 def signup_patient(request):
-    form1=forms.PatientUserForm()
-    form2=forms.PatientSignupForm()
-    patient_form={
-        'form1':form1,
-        'form2':form2
-    }
     if request.method == "POST":
         form1=forms.PatientUserForm(request.POST)
         form2=forms.PatientSignupForm(request.POST)
@@ -65,13 +57,16 @@ def signup_patient(request):
             user=form1.save()
             user.set_password(user.password)
             user.save()
-            pat_details=form2.save(commit=False)
-            pat_details.user=user
-            pat_details=pat_details.save()
-            pat_grp=Group.objects.get_or_create(name="patient")
-            pat_grp[0].user_set.add(user)
-        return HttpResponseRedirect('patientlogin')
-    return render(request,'signup_patient.html',context=patient_form)
+            doc_details=form2.save(commit=False)
+            doc_details.user=user
+            doc_details=doc_details.save()
+            doc_grp=Group.objects.get_or_create(name="patient")
+            doc_grp[0].user_set.add(user)
+            return HttpResponse("Successfully Registered Now login to access Patient Dashboard")
+    else:
+        form1=forms.PatientUserForm()
+        form2=forms.PatientSignupForm()
+    return render(request,'signup_patient.html',{'form1': form1, 'form2': form2, })
 
 def is_admin(user):
     return user.groups.filter(name='admin').exists()

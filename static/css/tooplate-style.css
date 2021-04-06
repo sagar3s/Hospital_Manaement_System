@@ -11,6 +11,7 @@ http://www.tooplate.com/view/2098-health
   body {
     background: #ffffff;
     font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     overflow-x: hidden;
   }
 
@@ -755,7 +756,7 @@ http://www.tooplate.com/view/2098-health
   -----------------------------------------*/
 
   #appointment {
-    padding-top: 100px;
+    padding-top: -5px;
   }
 
   #appointment label {
