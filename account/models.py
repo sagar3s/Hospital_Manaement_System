@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+
+GENDER_CHOICE = (
+    (1, 'Female'),
+    (2, 'Male'),
+    (3, 'Others'),
+)
+
 DEPARTMENT= (
     (1, 'Eye Care'),
     (2, 'Skin Care'),
@@ -10,11 +17,7 @@ DEPARTMENT= (
     (6, 'General'),
     (7, 'Cardiology')
 )
-GENDER_CHOICE = (
-    (1, 'Female'),
-    (2, 'Male'),
-    (3, 'Others'),
-)
+
 BLOOD_GROUPS = (
     (1, 'A+'),
     (2, 'A-'),

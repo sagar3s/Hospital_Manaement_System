@@ -151,7 +151,10 @@ http://www.tooplate.com/view/2098-health
   .news-thumb img {
     border-radius: 10px 10px 0 0;
   }
-
+  .logo-img{
+    margin-left: -5px;
+    margin-top: -7px;
+    }
   .news-info {
     padding: 30px;
     text-align: left;
