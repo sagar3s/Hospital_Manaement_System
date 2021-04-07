@@ -8,7 +8,7 @@ from django.contrib.auth.models import Group
 from django.shortcuts import render,redirect,reverse,HttpResponse
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 def homepage(request):
     if request.user.is_authenticated:
@@ -72,10 +72,26 @@ def signup_patient(request):
     return render(request,'signup_patient.html',{'form1': form1, 'form2': form2, })
 
 
-def is_admin(user):
+def logged_as_admin(user):
     return user.groups.filter(name='admin').exists()
-def is_doctor(user):
+def logged_as_doctor(user):
     return user.groups.filter(name='doctor').exists()
-def is_patient(user):
+def logged_as_patient(user):
     return user.groups.filter(name='patient').exists()
 
+
+def postlogin(request):
+    if logged_as_admin(request.user):
+        return redirect('admin_dashboard')
+    elif logged_as_doctor(request.user):
+        account_is_approved=models.Doctor.objects.all().filter(user_id=request.user.id,status=True)
+        if account_is_approved:
+            return redirect('doctor_dashboard')
+        else:
+            return render(request,'pending_doctor.html')
+    elif logged_as_patient(request.user):
+        account_is_approved=models.Patient.objects.all().filter(user_id=request.user.id,status=True)
+        if account_is_approved:
+            return redirect('patient_dashboard')
+        else:
+            return render(request,'pending_patient.html')
