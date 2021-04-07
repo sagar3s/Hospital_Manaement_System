@@ -71,9 +71,11 @@ def signup_patient(request):
         form2=forms.PatientSignupForm()
     return render(request,'signup_patient.html',{'form1': form1, 'form2': form2, })
 
+
 def is_admin(user):
     return user.groups.filter(name='admin').exists()
 def is_doctor(user):
     return user.groups.filter(name='doctor').exists()
 def is_patient(user):
     return user.groups.filter(name='patient').exists()
+
