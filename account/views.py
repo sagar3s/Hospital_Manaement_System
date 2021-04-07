@@ -17,7 +17,6 @@ def homepage(request):
 def register(request):
     return render(request, 'register.html')
 def signup_admin(request):
-    form=forms.AdminSigupForm()
     if request.method=="POST":
         form=forms.AdminSigupForm(request.POST)
         if form.is_valid():
@@ -26,7 +25,9 @@ def signup_admin(request):
             user.save()
             admingrp=Group.objects.get_or_create(name='admin')
             admingrp[0].user_set.add(user)
-            return HttpResponseRedirect('adminlogin')
+            return HttpResponse("admin registered")
+    else:
+        form=forms.AdminSigupForm()
     return render(request,'admin_signup.html', {'form':form,})
 
 def signup_doctor(request):

@@ -20,7 +20,7 @@ class PatientUserForm(forms.ModelForm):
 class PatientSignupForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ('Address', 'Phone', 'gender','blood_group', 'age','status')
+        fields = ('Address', 'Phone', 'gender','blood_group', 'age')
 
 class DoctorUserForm(forms.ModelForm):
     class Meta:
@@ -32,4 +32,4 @@ class DoctorUserForm(forms.ModelForm):
 class DoctorSignupForm(forms.ModelForm):
     class Meta:
         model = Doctor
-        fields = ('address','contact','department','status','profile_pic','gender')
+        fields = ('address','contact','department','profile_pic','gender')

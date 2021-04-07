@@ -46,6 +46,8 @@ class Patient(models.Model):
     @property
     def get_id(self):
         return self.user.id
+    def __str__(self):
+        return "{}".format(self.user.first_name)
 
 
 class Doctor(models.Model):
@@ -64,7 +66,7 @@ class Doctor(models.Model):
     def get_id(self):
         return self.user.id
     def __str__(self):
-        return "{} ({})".format(self.user.first_name,self.department)
+        return "{}".format(self.user.first_name)
         
 class Appointment(models.Model):
     patient=models.ForeignKey(Patient, null=True, on_delete=models.CASCADE)

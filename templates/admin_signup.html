@@ -1,0 +1,7 @@
+<h3>Admin Register</h3>
+{% load widget_tweaks %}
+<form method="post" action="">
+    {% csrf_token %}
+        {{form.as_p}}
+          <button type="submit" class="btnSubmit">Register</button>
+  </form>
