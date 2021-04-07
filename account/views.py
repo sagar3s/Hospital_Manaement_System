@@ -14,6 +14,8 @@ def homepage(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'index.html')
+def login_page(request):
+    return render(request, 'login.html')
 def register(request):
     return render(request, 'register.html')
 def signup_admin(request):
