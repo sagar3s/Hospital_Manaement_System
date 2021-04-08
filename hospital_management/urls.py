@@ -24,4 +24,7 @@ urlpatterns = [
     path('admin_signup/',views.signup_admin,name='admin_signup'),
     path('doctor_signup/',views.signup_doctor,name='doctor_register'),
     path('patient_signup/',views.signup_patient,name='patient_register'),
+    path('login', LoginView.as_view(template_name='login.html'),name='login'),
+    path('afterlogin', views.postlogin,name='afterlogin'),
+ 
 ]
