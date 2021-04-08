@@ -1,16 +1,3 @@
-
-
-{% load widget_tweaks %}
-
-  <!--- signup page for doctor by admin(sumit)  ---------->
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-        {{form1.as_p}}
-        {{form2.as_p}}
-          <button type="submit" class="btnSubmit">Register</button>
-
-  </form>
-
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="{static 'js/bootstrap.min.js' %}"></script>
   <script src="{static 'js/jquery/3.2.1/jquery.min.js' %}"></script>
@@ -34,44 +21,38 @@
     <div class="form-row">
       <div class="col form-group">
         <label>First name </label>   
-          <input type="text" class="form-control" placeholder="">
+        {{form1.first_name|add_class:"form-control"}}
       </div> <!-- form-group end.// -->
       <div class="col form-group">
         <label>Last name</label>
-          <input type="text" class="form-control" placeholder=" ">
+        {{form1.last_name|add_class:"form-control"}}
       </div> <!-- form-group end.// -->
     </div> <!-- form-row end.// -->
     <div class="form-group">
       <label>Username</label>
-      <input type="username" class="form-control" placeholder="">
+      {{form1.username|add_class:"form-control"}}
     </div> <!-- form-group end.// -->
     <div class="form-group">
       <label>Email</label>
-      <input type="email" class="form-control" placeholder="">
+      {{form1.email|add_class:"form-control"}}
     </div> <!-- form-group end.// -->
     <div class="form-group">
       <label>Password</label>
-        <input class="form-control" type="password">
+      {{form1.password|add_class:"form-control"}}
     </div> <!-- form-group end.// -->  
     <div class="form-group">
       <label>Address</label>
-      <input type="address" class="form-control" placeholder="">
+      {{form2.address|add_class:"form-control"}}
     </div> <!-- form-group end.// -->
     <div class="form-group">
       <label>Contact</label>
-      <input type="tel" class="form-control" placeholder="">
+      {{form2.contact|add_class:"form-control"}}
     </div> <!-- form-group end.// -->
     <div class="form-group">
       <label for="type" class="col-sm-3 control-label">Department</label>
       <div class="col-sm-4">
           <select id="Select" class="form-control">
-              <option>General</option>
-              <option>Eye Care</option>
-              <option>Skin Care</option>
-              <option>Surgery</option>
-              <option>Physical Therapy</option>
-              <option>Dental</option>
-              <option>Cardiology</option>
+            {{}}
           </select>
       </div>
   </div> <!-- /.form-group -->
