@@ -1,7 +1,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{static 'js/bootstrap.min.js' %}"></script>
+<script src="{static 'js/jquery/3.2.1/jquery.min.js' %}"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -18,7 +18,7 @@
   {% load widget_tweaks %}
   <form method="post" action="">
       {% csrf_token %}
-          {{form.as_p}}
+          
 	<div class="form-row">
 		<div class="col form-group">
 			<label>First name </label>   
@@ -40,7 +40,7 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Register  </button>
     </div> <!-- form-group// -->   
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block"> Home  </button>
-  </div> <!-- form-group// -->                                             
+    <a href="{% url 'home' %}" class="btn btn-secondary btn-user btn-block">
+      Back To Home
+  </a>                                            
 </form>
