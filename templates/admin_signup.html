@@ -19,28 +19,28 @@
   <form method="post" action="">
       {% csrf_token %}
           
-	<div class="form-row">
+	 <div class="form-row">
 		<div class="col form-group">
-			<label>First name </label>   
-		  	<input type="text" class="form-control" placeholder="">
+			<label>First name </label>
+			{{form.first_name|add_class:"form-control"}}   
 		</div> <!-- form-group end.// -->
 		<div class="col form-group">
 			<label>Last name</label>
-		  	<input type="text" class="form-control" placeholder=" ">
+			{{form.last_name|add_class:"form-control"}}
 		</div> <!-- form-group end.// -->
-	</div> <!-- form-row end.// -->
+	 </div> <!-- form-row end.// -->
 	<div class="form-group">
 		<label>Username</label>
-		<input type="username" class="form-control" placeholder="">
+		{{form.username|add_class:"form-control"}}
 	</div> <!-- form-group end.// -->
 	<div class="form-group">
 		<label>Create password</label>
-	    <input class="form-control" type="password">
+	    {{form.password|add_class:"form-control"}}
 	</div> <!-- form-group end.// -->  
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Register  </button>
     </div> <!-- form-group// -->   
     <a href="{% url 'home' %}" class="btn btn-secondary btn-user btn-block">
       Back To Home
-  </a>                                            
+    </a>                                            
 </form>
