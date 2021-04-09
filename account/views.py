@@ -14,10 +14,6 @@ def homepage(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'index.html')
-def login_page(request):
-    return render(request, 'login.html')
-def register(request):
-    return render(request, 'register.html')
 def signup_admin(request):
     if request.method=="POST":
         form=forms.AdminSigupForm(request.POST)
@@ -33,7 +29,6 @@ def signup_admin(request):
     return render(request,'admin_signup.html', {'form':form,})
 
 def signup_doctor(request):
-
     if request.method == "POST":
         form1=forms.DoctorUserForm(request.POST)
         form2=forms.DoctorSignupForm(request.POST)
@@ -80,7 +75,7 @@ def logged_as_patient(user):
     return user.groups.filter(name='patient').exists()
 
 
-def postlogin(request):
+def check_user_type(request):
     if logged_as_admin(request.user):
         return redirect('admin_dashboard')
     elif logged_as_doctor(request.user):

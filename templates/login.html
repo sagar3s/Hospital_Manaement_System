@@ -35,35 +35,30 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-7 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-5">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form method="POST" class="user">
+                                    <form method="POST" class="user" action="{% url 'login' %}" >
                                        {% csrf_token %}
+                                       {% load widget_tweaks %}
                                         <div class="form-group">
-<<<<<<< HEAD
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-=======
-                                            <input type="text" class="form-control form-control-user"
-                                                id="username" aria-describedby="emailHelp"
->>>>>>> 4a71c666ddcf828b8d5d2f29f2493a268fa8063e
-                                                placeholder="Username">
+                                            {% render_field form.username class="form-control form-control-user" placeholder="Username" %}
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            {% render_field form.password class="form-control form-control-user" placeholder="Password" %}
+
+                                            {{form.errors}}
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
+                                              
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
