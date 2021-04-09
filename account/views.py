@@ -77,16 +77,34 @@ def logged_as_patient(user):
 
 def check_user_type(request):
     if logged_as_admin(request.user):
-        return redirect('admin_dashboard')
+        return HttpResponse('admin_dashboard')
     elif logged_as_doctor(request.user):
         account_is_approved=models.Doctor.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return redirect('doctor_dashboard')
+            return render(request,'pending_doctor.html')
         else:
             return render(request,'pending_doctor.html')
     elif logged_as_patient(request.user):
         account_is_approved=models.Patient.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return redirect('patient_dashboard')
+            return HttpResponseRedirect('patient_dashboard')
         else:
             return render(request,'pending_patient.html')
+#COntrol Admin Dashboard
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def admin_dashboard(request):
+    mydict={}
+    return render(request,'admin_dashboard.html',context=mydict)
+
+@login_required(login_url='login')
+@user_passes_test(logged_as_doctor)
+def doctor_dashboard(request):
+    mydict={}
+    return render(request,"doctor_dashboard.html",context=mydict)
+
+@login_required(login_url='login')
+@user_passes_test(logged_as_patient)
+def patient_dashboard(request):
+    mydict={}
+    return render(request,"patient_dashboard.html",context=mydict)
