@@ -97,13 +97,13 @@ def check_user_type(request):
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_dashboard(request):
-    mydict={}
-    return render(request,'admin_dashboard.html',context=mydict)
+    data={}
+    return render(request,'admin_dashboard.html',context=data)
 
 @login_required(login_url='login')
 @user_passes_test(logged_as_doctor)
 def doctor_dashboard(request):
-    mydict={}
+    data={}
     return render(request,"doctor_dashboard.html",context=mydict)
 
 @login_required(login_url='login')
