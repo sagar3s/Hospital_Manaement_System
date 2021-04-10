@@ -104,10 +104,10 @@ def admin_dashboard(request):
 @user_passes_test(logged_as_doctor)
 def doctor_dashboard(request):
     data={}
-    return render(request,"doctor_dashboard.html",context=mydict)
+    return render(request,"doctor_dashboard.html",context=data)
 
 @login_required(login_url='login')
 @user_passes_test(logged_as_patient)
 def patient_dashboard(request):
-    mydict={}
-    return render(request,"patient_dashboard.html",context=mydict)
+    data={}
+    return render(request,"patient_dashboard.html",context=data)
