@@ -77,19 +77,22 @@ def logged_as_patient(user):
 
 def check_user_type(request):
     if logged_as_admin(request.user):
-        return HttpResponse('admin_dashboard')
+        return HttpResponseRedirect('admin_view')
     elif logged_as_doctor(request.user):
         account_is_approved=models.Doctor.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return render(request,'pending_doctor.html')
+            return HttpResponseRedirect('doctor_view')
         else:
             return render(request,'pending_doctor.html')
     elif logged_as_patient(request.user):
         account_is_approved=models.Patient.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return HttpResponseRedirect('patient_dashboard')
+            return HttpResponseRedirect('patient_view')
         else:
             return render(request,'pending_patient.html')
+    else:
+        return HttpResponseRedirect('admin')
+        
 #COntrol Admin Dashboard
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
