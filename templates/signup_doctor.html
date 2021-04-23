@@ -5,7 +5,7 @@
 />
 <script src="{static 'js/bootstrap.min.js' %}"></script>
 <script src="{static 'js/jquery/3.2.1/jquery.min.js' %}"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <link
   rel="stylesheet"
@@ -28,62 +28,62 @@
               <label>First name </label>
               {{form1.first_name|add_class:"form-control"}}
             </div>
-            <!-- form-group end.// -->
+            
             <div class="col form-group">
               <label>Last name</label>
               {{form1.last_name|add_class:"form-control"}}
             </div>
-            <!-- form-group end.// -->
+            
           </div>
-          <!-- form-row end.// -->
+          
           <div class="form-group">
             <label>Username</label>
             {{form1.username|add_class:"form-control"}}
           </div>
-          <!-- form-group end.// -->
+          
           <div class="form-group">
             <label>Email</label>
             {{form1.email|add_class:"form-control"}}
           </div>
-          <!-- form-group end.// -->
+          
           <div class="form-group">
             <label>Password</label>
             {{form1.password|add_class:"form-control"}}
           </div>
-          <!-- form-group end.// -->
+          
           <div class="form-group">
             <label>Address</label>
             {{form2.address|add_class:"form-control"}}
           </div>
-          <!-- form-group end.// -->
+          
           <div class="form-group">
             <label>Contact</label>
             {{form2.contact|add_class:"form-control"}}
           </div>
-          <!-- form-group end.// -->
+         
           <div class="form-group">
             <label>Department</label>
             <div class="form-group">
               {{form2.department|add_class:"form-control"}}
             </div>
           </div>
-          <!-- /.form-group -->
+          
           <div class="form-group">
             <label>Profile Picture</label>
             <div class="form-group">{{form2.profile_pic}}</div>
           </div>
-          <!-- /.form-group -->
+          
           <div class="form-group">
             <label>Gender</label>
             <div class="form-group">{{form2.gender|add_class:"form-control"}}</div>
           </div>
-          <!-- /.form-group -->
+          
           <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">
               Register
             </button>
           </div>
-          <!-- form-group// -->
+          
           <a
             href="{% url 'home' %}"
             class="btn btn-secondary btn-user btn-block"

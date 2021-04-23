@@ -1,60 +1,4 @@
-/*
-Author       : Dreamguys
-Template Name: PreClinic - Medical and Hospital Admin Template
-Version      : 1.0
-*/
 
-/*============================
- [Table of CSS]
-
-1. General
-2. Table
-3. Helper Class
-4. Bootstrap Classes
-5. Header
-6. Sidebar
-7. Content
-8. Login
-9. Dashboard
-10. Activity
-11. Select2
-12. Nav tabs
-13. Holidays
-14. Edit Profile
-15. Chat
-16. Focus Label
-17. Leave
-18. Employee
-19. Events
-20. Profile
-21. Notifications
-22. Roles & Permissions
-23. Chat Right Sidebar
-24. Invoice
-25. Doctors
-26. Add Doctor
-27. Payslip
-28. Attendance
-29. Inbox
-30. Mail View
-31. Blog
-32. Blog View
-33. UI Kit
-34. Error
-35. Lock Screen
-36. Voice call
-37. Video Call
-38. Incoming call
-39. Notification settings
-40. Chat Sidebar
-41. Gallery
-42. Responsive
-
-========================================*/
-
-/*-----------------
-	1. General
------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
 html {
@@ -169,9 +113,7 @@ textarea.form-control {
 	border: 1px solid #eaeaea;
 }
 
-/*-----------------
-	2. Table
------------------------*/
+
 
 .table {
 	color: #000;
@@ -210,9 +152,7 @@ table.table td h2 span {
 	margin-top: 3px;
 }
 
-/*-----------------
-	3. Helper Class
------------------------*/
+
 
 .m-r-5 {
 	margin-right: 5px !important;
@@ -371,9 +311,7 @@ table.table td h2 span {
 	font-size: 0.875rem;
 }
 
-/*-----------------
-	4. Bootstrap Classes
------------------------*/
+
 
 .btn-white {
 	background-color: #fff;
@@ -697,9 +635,7 @@ textarea.form-control {
     box-shadow: unset;
 }
 
-/*-----------------
-	5. Header
------------------------*/
+
 
 .header {
 	background-color: #009efb;
@@ -815,9 +751,7 @@ textarea.form-control {
 	background-color: #faa937;
 }
 
-/*-----------------
-	6. Sidebar
------------------------*/
+
 
 .sidebar {
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
@@ -1025,9 +959,7 @@ textarea.form-control {
 	width: auto;
 }
 
-/*-----------------
-	7. Content
------------------------*/
+
 
 .page-wrapper {
 	left: 0;
@@ -1042,9 +974,7 @@ textarea.form-control {
 	padding: 30px;
 }
 
-/*-----------------
-	8. Login
------------------------*/
+
 
 .account-page {
 	display: table-row;
@@ -1116,9 +1046,6 @@ textarea.form-control {
 	text-transform: uppercase;
 }
 
-/*-----------------
-	9. Dashboard
------------------------*/
 
 .dash-widget {
 	background-color: #fff;
@@ -1439,9 +1366,7 @@ ul.chat-user-total li i.old-users {
     min-width: 80px;
 }
 
-/*-----------------
-	10. Activity
------------------------*/
+
 
 .activity-box {
 	position: relative;
@@ -1590,9 +1515,7 @@ ul.chat-user-total li i.old-users {
 	min-height: 40px;
 }
 
-/*-----------------
-	12. Nav tabs
------------------------*/
+
 
 .nav-tabs > li > a {
 	margin-right: 0;
@@ -1644,9 +1567,7 @@ ul.chat-user-total li i.old-users {
 	border-color: transparent;
 }
 
-/*-----------------
-	13. Holidays
------------------------*/
+
 
 .custom-table tr.holiday-completed {
 	color: #aaa;
@@ -1665,9 +1586,7 @@ ul.chat-user-total li i.old-users {
 	padding: 5px;
 }
 
-/*-----------------
-	14. Edit Profile
------------------------*/
+
 
 .profile-img-wrap {
 	height: 120px;
@@ -1708,9 +1627,6 @@ ul.chat-user-total li i.old-users {
 	color: #fff;
 }
 
-/*-----------------
-	15. Chat
------------------------*/
 
 .chat-main-row {
 	bottom: 0;
@@ -2359,9 +2275,7 @@ ul.chat-user-total li i.old-users {
 	font-size: 16px;
 }
 
-/*-----------------
-	16. Focus Label
------------------------*/
+
 
 .form-focus {
 	display: flex;
@@ -2452,9 +2366,7 @@ ul.chat-user-total li i.old-users {
 	color: #888;
 }
 
-/*-----------------
-	17. Leave
------------------------*/
+
 
 .filter-row .btn {
 	border-radius: 0;
@@ -2481,9 +2393,7 @@ ul.chat-user-total li i.old-users {
 	padding: 3px 10px;
 }
 
-/*-----------------
-	18. Employee
------------------------*/
+
 
 .action-icon {
 	color: #777;
@@ -2559,9 +2469,7 @@ ul.chat-user-total li i.old-users {
 	color: #333;
 }
 
-/*-----------------
-	19. Events
------------------------*/
+
 
 .calendar {
 	float: left;
@@ -2666,9 +2574,7 @@ a.fc-event:not([href]) {
 	font-family: 'Rubik', sans-serif;
 }
 
-/*-----------------
-	20. Profile
------------------------*/
+
 
 .card-box.profile-header {
 	margin: 0;
@@ -2801,9 +2707,7 @@ a.fc-event:not([href]) {
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
-/*-----------------
-	21. Notifications
------------------------*/
+
 
 .notifications {
 	padding: 0;
@@ -2891,9 +2795,7 @@ a.fc-event:not([href]) {
 	color: #333;
 }
 
-/*-----------------
-	22. Roles & Permissions
------------------------*/
+
 
 .roles-menu {
 	margin-top: 20px;
@@ -3052,9 +2954,7 @@ html.menu-opened body {
 	width: 100%;
 }
 
-/*-----------------
-	23. Chat Right Sidebar
------------------------*/
+
 
 .fixed-header .custom-menu {
 	margin: 1px 0 0;
@@ -3139,9 +3039,7 @@ html.menu-opened body {
 	white-space: nowrap;
 }
 
-/*-----------------
-	24. Invoice
------------------------*/
+
 
 .invoice-details,
 .invoice-payment-details > li span {
@@ -3180,9 +3078,7 @@ html.menu-opened body {
 	border: 1px solid #fff;
 }
 
-/*-----------------
-	25. Doctors
------------------------*/
+
 
 .doctor-img {
 	cursor: pointer;
@@ -3222,9 +3118,7 @@ html.menu-opened body {
 	padding: 10px 20px;
 }
 
-/*-----------------
-	26. Add Doctor
------------------------*/
+
 
 .profile-upload {
 	display: flex;
@@ -3333,9 +3227,7 @@ a.status-grey {
 	float: right;
 }
 
-/*-----------------
-	27. Payslip
------------------------*/
+
 
 .payslip-title {
 	margin-bottom: 20px;
@@ -3344,17 +3236,13 @@ a.status-grey {
 	text-transform: uppercase;
 }
 
-/*-----------------
-	28. Attendance
------------------------*/
+
 
 .half-day {
 	width: 15px;
 }
 
-/*-----------------
-	29. Inbox
------------------------*/
+
 
 .table-inbox input[type="radio"],
 .table-inbox input[type="checkbox"] {
@@ -3430,9 +3318,7 @@ table.table-inbox tbody tr.checked {
 	margin-right: 5px;
 }
 
-/*-----------------
-	30. Mail View
------------------------*/
+
 
 .attachments {
 	list-style: none;
@@ -3511,9 +3397,7 @@ table.table-inbox tbody tr.checked {
 	float: right;
 }
 
-/*-----------------
-	31. Blog
------------------------*/
+
 
 .blog {
 	position: relative;
@@ -3888,9 +3772,7 @@ blockquote p {
 	color: #f00;
 }
 
-/*-----------------
-	32. Blog View
------------------------*/
+
 
 .blog-view .blog-title {
 	font-size: 32px;
@@ -4018,9 +3900,7 @@ blockquote p {
 	text-align: right;
 }
 
-/*-----------------
-	33. UI Kit
------------------------*/
+
 
 .pagination-box .pagination {
 	margin-top: 0;
@@ -4029,9 +3909,6 @@ blockquote p {
 	padding-top: 20px;
 }
 
-/*-----------------
-	34. Error
------------------------*/
 
 .error-box {
 	background-color: #fff;
@@ -4074,9 +3951,7 @@ blockquote p {
 	text-transform: uppercase;
 }
 
-/*-----------------
-	35. Lock Screen
------------------------*/
+
 
 .lock-user {
 	margin-bottom: 20px;
@@ -4086,9 +3961,7 @@ blockquote p {
 	width: 100px;
 }
 
-/*-----------------
-	36. Voice call
------------------------*/
+
 
 .voice-call-avatar {
 	flex-direction: column;
@@ -4279,9 +4152,7 @@ blockquote p {
 	white-space: pre;
 }
 
-/*-----------------
-	37. Video Call
------------------------*/
+
 
 .content-full {
 	height: 100%;
@@ -4296,9 +4167,7 @@ blockquote p {
 	padding: 19px 15px;
 }
 
-/*-----------------
-	38. Incoming Call
------------------------*/
+
 
 .incoming-btns {
 	margin-top: 20px;
@@ -4314,17 +4183,13 @@ blockquote p {
 	margin-bottom: 0;
 }
 
-/*-----------------
-	39. Notification settings
------------------------*/
+
 
 .notification-list .list-group-item {
 	padding: 15px;
 }
 
-/*-----------------
-	40. Chat Sidebar
------------------------*/
+
 
 .chat-sidebar {
 	background-color: #fff;
@@ -4375,9 +4240,7 @@ blockquote p {
 	margin-right: 0;
 }
 
-/*-----------------
-	41. Gallery
------------------------*/
+
 
 .lg-backdrop {
 	z-index: 1041;
@@ -4386,9 +4249,6 @@ blockquote p {
 	box-shadow: 0 6px 15px rgba(36, 37, 38, 0.08);
 }
 
-/*-----------------
-	42. Responsive
------------------------*/
 
 @media only screen and (min-width: 991px) {
 	#toggle_btn {

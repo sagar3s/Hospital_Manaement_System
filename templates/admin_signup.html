@@ -2,7 +2,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="{static 'js/bootstrap.min.js' %}"></script>
 <script src="{static 'js/jquery/3.2.1/jquery.min.js' %}"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -23,23 +23,23 @@
 		<div class="col form-group">
 			<label>First name </label>
 			{{form.first_name|add_class:"form-control"}}   
-		</div> <!-- form-group end.// -->
+		</div> 
 		<div class="col form-group">
 			<label>Last name</label>
 			{{form.last_name|add_class:"form-control"}}
-		</div> <!-- form-group end.// -->
-	 </div> <!-- form-row end.// -->
+		</div> 
+	 </div> 
 	<div class="form-group">
 		<label>Username</label>
 		{{form.username|add_class:"form-control"}}
-	</div> <!-- form-group end.// -->
+	</div> 
 	<div class="form-group">
 		<label>Create password</label>
 	    {{form.password|add_class:"form-control"}}
-	</div> <!-- form-group end.// -->  
+	</div>  
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Register  </button>
-    </div> <!-- form-group// -->   
+    </div>    
     <a href="{% url 'home' %}" class="btn btn-secondary btn-user btn-block">
       Back To Home
     </a>                                            

@@ -10,10 +10,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <!--[if lt IE 9]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
 </head>
 
 <body>
@@ -32,9 +28,84 @@
                         <li class="active">
                             <a href="admin_dashboard.html"><span>Dashboard</span></a>
                         </li>
-						<li>
-                            <a href="doctors.html"><span>Doctors</span></a>
-                        </li>
+                        <li class="submenu">
+							<meta name="viewport" content="width=device-width, initial-scale=1">
+							
+							<style>
+							.dropbtn:hover, .dropbtn:focus {
+								
+							}.dropdown a:hover {background-color: #ddd;}
+							.show {display: block;}
+							.sidenav {
+								height: 100%;
+								width: 200px;
+								position: fixed;
+								z-index: 1;
+								top: 0;
+								left: 0;
+								background-color: #111;
+								overflow-x: hidden;
+								padding-top: 20px;
+							  }
+							  .sidenav a, .dropdown-btn {
+								padding: 6px 8px 6px 16px;
+								text-decoration: none;
+								font-size: 20px;
+								color: #818181;
+								display: block;
+								border: none;
+								background: none;
+								width: 100%;
+								text-align: left;
+								cursor: pointer;
+								outline: none;
+							  }
+							  
+							  
+							  .sidenav a:hover, .dropdown-btn:hover {
+								color: #f1f1f1;
+							  }
+							  
+							  
+							  .main {
+								margin-left: 200px; 
+								font-size: 20px; 
+								padding: 0px 10px;
+							  }
+							  
+							  
+							  .active {
+								background-color: green;
+								color: white;
+							  }
+							  
+							  
+							  .dropdown-container {
+								display: none;
+								background-color: #262626;
+								padding-left: 8px;
+							  }
+							  
+							  
+							  .fa-caret-down {
+								float: right;
+								padding-right: 8px;
+							  }
+							  
+							  
+							  @media screen and (max-height: 450px) {
+								.sidenav {padding-top: 15px;}
+								.sidenav a {font-size: 18px;}
+							  }
+							 </style>
+								<a href="#"><span> Doctors </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="employees.html">Manage Doctors</a></li>
+									<li><a href="leaves.html">Add Doctors</a></li>
+									<li><a href="holidays.html">Update</a></li>
+									
+								</ul>
+							</li>
                         <li>
                             <a href="patients.html"><span>Patients</span></a>
                         </li>
@@ -98,114 +169,8 @@
                         </div>
                     </div>
                 </div>
-				<div class="row">
-					
-						<div class="card">
-							<div class="card-body p-0">
-								<div class="table-responsive">
-									<table class="table mb-0">
-										<thead class="d-none">
-											<tr>
-												<th>Patient Name</th>
-												<th>Doctor Name</th>
-												<th>Timing</th>
-												<th class="text-right">Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-                        </div>
-                    </div>
+				
+                    
             </div>
         </div>
     </div>
@@ -219,7 +184,4 @@
     <script src="{% static 'js/app.js' %}"></script>
 
 </body>
-
-
-
 </html>
