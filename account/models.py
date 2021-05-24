@@ -68,11 +68,13 @@ class Doctor(models.Model):
     def __str__(self):
         return "{}".format(self.user.first_name)
         
+
+
 class Appointment(models.Model):
-    patient=models.ForeignKey(Patient, null=True, on_delete=models.CASCADE)
-    Doctor=models.ForeignKey(Doctor, null=True, on_delete=models.CASCADE)
-    appt_date=models.DateField(("Date"),default=datetime.date.today)
-    symptoms=models.CharField(max_length=100, null=True)
+    patientId=models.PositiveIntegerField(null=True)
+    doctorId=models.PositiveIntegerField(null=True)
+    patientName=models.CharField(max_length=40,null=True)
+    doctorName=models.CharField(max_length=40,null=True)
+    appointmentDate=models.DateField(auto_now=True)
+    description=models.TextField(max_length=500)
     status=models.BooleanField(default=False)
-
-

@@ -15,10 +15,10 @@
 
 <body>
 
-    <div class="main-wrapper">
+    <div class="main-wrapper" >
         <div class="header">
 			<div class="header-left">
-				<a href="doctor_dashboard.html" class="logo">
+				<a href="doctor_dashboard.html" class="logo" class="panel panel-primary">
 					<span>Doctor Dashboard</span>
 				</a>
 			</div>
@@ -116,24 +116,12 @@
 							 </style>
 								<a href="#"><span> Patient </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="employees.html">Employees List</a></li>
-									<li><a href="leaves.html">Leaves</a></li>
-									<li><a href="holidays.html">Holidays</a></li>
-									<li><a href="attendance.html">Attendance</a></li>
+									<li><a href="doctors.html">Add Patients</a></li>
+									<li><a href="patients.html">View Patients</a></li>
+									<li><a href="appointments.html">Approve Patients</a></li>
+									<li><a href="schedule.html">Update Patients</a></li>
 								</ul>
 							</li>
-						<li>
-                            <a href="doctors.html"><span>Add Patients</span></a>
-                        </li>
-                        <li>
-                            <a href="patients.html"><span>View Patients</span></a>
-                        </li>
-                        <li>
-                            <a href="appointments.html"><span>Approve Patients</span></a>
-                        </li>
-                        <li>
-                            <a href="schedule.html"><span>Update Patients</span></a>
-                        </li>
                         <li>
                             <a href="login.html"><span>Logout</span></a>
                         </li>
@@ -170,45 +158,42 @@
                         </div>
                     </div>
                 </div>
-				<style>
-				table {
-					font-family: arial, sans-serif;
-					border-collapse: collapse;
-					width: 100%;
-				  }
-				  
-				  td, th {
-					border: 2px solid #58b2ee;
-					text-align: center;
-					padding: 8px;
-				  }
-				  
-				  
-				</style>
-				<table border = "1" cellpadding = "5" cellspacing = "5">
-					<tr>
-					   <th><h1 style="font-size:30px;">Name</h1></th>
-					   <th><h1 style="font-size:30px;">Contact</h1></th>
-					   <th><h1 style="font-size:30px;">Department</h1></th>
-					   <th><h1 style="font-size:30px;">Gender</h1></th>
-					   <th><h1 style="font-size:30px;">Status</h1></th>
-					</tr>
-					<tr>
-					   <td><h1 style="font-size:15px;">Patient1</h1></td>
-					   <td><h1 style="font-size:15px;">98125111561</h1></td>
-					   <td><h1 style="font-size:15px;">Surgery</h1></td>
-					   <td><h1 style="font-size:15px;">Male</h1></td>
-					   <td><input type="checkbox"></td>
-					</tr>
-					   <td><h1 style="font-size:15px;">Patient2</h1></td>
-					   <td><h1 style="font-size:15px;">981465931</h1></td>
-					   <td><h1 style="font-size:15px;">Eye</h1></td>
-					   <td><h1 style="font-size:15px;">Female</h1></td>
-					   <td><input type="checkbox"></td>
-					<tr>
-					   
-					</tr>
-				 </table>
+				<div class="container">
+					<div class="panel panel-primary">
+					  <div class="panel-heading" style="text-align:center;">
+						<h6 class="panel-title">Patients</h6>
+					  </div>
+					  <table class="table table-hover" id="dev-table">
+						<thead>
+									<tr>
+										<th><h1 style="font-size:15px;">Name</h1></th>
+										<th><h1 style="font-size:15px;">Contact</h1></th>
+										<th><h1 style="font-size:15px;">Department</h1></th>
+										<th><h1 style="font-size:15px;">Gender</h1></th>
+										<th><h1 style="font-size:15px;">Update</h1></th>
+										<th><h1 style="font-size:15px;">Delete</h1></th>
+									</tr>
+									<tr>
+										<td><h1 style="font-size:12px;">Patient1</h1></td>
+										<td><h1 style="font-size:12px;">98125111561</h1></td>
+										<td><h1 style="font-size:12px;">Surgery</h1></td>
+										<td><h1 style="font-size:12px;">Male</h1></td>
+										<td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
+                                        <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+									</tr> 
+										<tr>
+											<td><h1 style="font-size:12px;">Patient2</h1></td>
+											<td><h1 style="font-size:12px;">981465931</h1></td>
+											<td><h1 style="font-size:12px;">Eye</h1></td>
+											<td><h1 style="font-size:12px;">Female</h1></td>
+											<td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
+                                            <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+										</tr>
+						</thead>
+						
+					  </table>
+					</div>
+				  </div>
             </div>
         </div>
     </div>

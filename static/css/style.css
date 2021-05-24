@@ -118,6 +118,8 @@ textarea.form-control {
 .table {
 	color: #000;
 	border: 1px solid #f0f0f0;
+	margin-left: auto;
+    margin-top: 0px;
 }
 .table.table-white {
 	background-color: #fff;
@@ -638,7 +640,7 @@ textarea.form-control {
 
 
 .header {
-	background-color: #009efb;
+	background-color: #337ab7;
 	left: 0;
 	position: fixed;
 	right: 0;

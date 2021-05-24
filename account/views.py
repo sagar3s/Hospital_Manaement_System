@@ -65,7 +65,22 @@ def signup_patient(request):
         form1=forms.PatientUserForm()
         form2=forms.PatientSignupForm()
     return render(request,'signup_patient.html',{'form1': form1, 'form2': form2, })
-
+def admin_add_appointment(request):
+    return render(request,'admin_add_appointment.html')
+def admin_view_doctors(request):
+    return render(request,'admin_view_doctors.html')
+def admin_approve_doctor(request):
+    return render(request,'admin_approve_doctor.html') 
+def admin_approve_patient(request):
+    return render(request,'admin_approve_patient.html')
+def admin_view_patient(request):
+    return render(request,'admin_view_patient.html') 
+def admin_discharge_patient(request):
+    return render(request,'admin_discharge_patient.html')  
+def admin_view_appointment(request):
+    return render(request,'admin_view_appointment.html') 
+def admin_approve_appointment(request):
+    return render(request,'admin_approve_appointment.html') 
 
 def logged_as_admin(user):
     return user.groups.filter(name='admin').exists()

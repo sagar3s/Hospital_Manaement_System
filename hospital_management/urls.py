@@ -28,5 +28,12 @@ urlpatterns = [
     path('admin_view', views.admin_dashboard,name="admin_dashboard"),
     path('doctor_view', views.doctor_dashboard,name="doctor_dashboard"),
     path('patient_view', views.patient_dashboard,name="patient_dashboard"),
- 
+    path('admin_add_appointment', views.admin_add_appointment,name="admin_add_appointment"),
+    path('admin_view_doctors', views.admin_view_doctors,name="admin_view_doctors"),
+    path('admin_approve_doctor', views.admin_approve_doctor,name="admin_approve_doctor"),
+    path('admin_approve_patient', views.admin_approve_patient,name="admin_approve_patient"),
+    path('admin_view_patient', views.admin_view_patient,name="admin_view_patient"),
+    path('admin_discharge_patient', views.admin_discharge_patient,name="admin_discharge_patient"),
+    path('admin_view_appointment', views.admin_view_appointment,name="admin_view_appointment"),
+    path('admin_approve_appointment', views.admin_approve_appointment,name="admin_approve_appointment"),
 ]
