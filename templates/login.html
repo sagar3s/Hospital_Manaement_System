@@ -50,7 +50,21 @@
                                         <div class="form-group">
                                             {% render_field form.password class="form-control form-control-user" placeholder="Password" %}
 
-                                            {{form.errors}}
+                                            {% if form.errors %}
+                                                {% for field in form %}
+                                                    {% for error in field.errors %}
+                                                    <div class="alert alert-danger" role="alert">
+                                                        Incorrect Username/Password
+                                                      </div>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                {% for error in form.non_field_errors %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                            Incorrect Username/Password
+                                                          </div>
+                                                        
+                                                {% endfor %}
+                                            {% endif %}
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -59,14 +73,9 @@
                                             </div>
                                         </div>
                                               <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                                        <button type="submit" onclick="popup()" id="pop"  class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        <script>
-                                            function popup(){
-                                                swal("Invalid Username or Password", "Please Try Again", "error");
-                                            }
-                                        </script>
                                         <a href="{% url 'home' %}" class="btn btn-secondary btn-user btn-block">
                                             Back To Home
                                         </a>

@@ -9,13 +9,13 @@ GENDER_CHOICE = (
 )
 
 DEPARTMENT= (
-    (1, 'Eye Care'),
-    (2, 'Skin Care'),
-    (3, 'Surgery'),
-    (4, 'Physical Therapy'),
-    (5, 'Dental'),
-    (6, 'General'),
-    (7, 'Cardiology')
+    ('Eye Care', 'Eye Care'),
+    ('Skin Care', 'Skin Care'),
+    ('Surgery', 'Surgery'),
+    ('Physical Therapy', 'Physical Therapy'),
+    ('Dental', 'Dental'),
+    ('General', 'General'),
+    ('Cardiology', 'Cardiology'),
 )
 
 BLOOD_GROUPS = (
@@ -57,7 +57,7 @@ class Doctor(models.Model):
     gender = models.PositiveSmallIntegerField(
         choices=GENDER_CHOICE, default=3)
     address = models.CharField(max_length=40)
-    department= models.IntegerField(choices=DEPARTMENT,default='6')
+    department= models.CharField(max_length=50,choices=DEPARTMENT,default='Cardiologist')
     status=models.BooleanField(default=False)
     @property
     def get_name(self):
