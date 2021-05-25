@@ -76,13 +76,28 @@ def admin_approve_doctor(request):
 def admin_approve_patient(request):
     return render(request,'admin_approve_patient.html')
 def admin_view_patient(request):
-    return render(request,'admin_view_patient.html') 
+    patients=models.Patient.objects.all().filter(status=True)
+    return render(request,'admin_view_patient.html',{'patients':patients}) 
 def admin_discharge_patient(request):
     return render(request,'admin_discharge_patient.html')  
 def admin_view_appointment(request):
     return render(request,'admin_view_appointment.html') 
 def admin_approve_appointment(request):
-    return render(request,'admin_approve_appointment.html') 
+    return render(request,'admin_approve_appointment.html')
+def doctor_view_patient(request):
+    patients=models.Patient.objects.all().filter(status=True)
+    return render(request,'doctor_view_patient.html',{'patients':patients})
+def doctor_view_discharge_patient(request):
+    patients=models.Patient.objects.all().filter(status=True)
+    return render(request,'doctor_view_discharge_patient.html',{'patients':patients})
+def doctor_view_appointment(request):
+    return render(request,'doctor_view_appointment.html')
+def doctor_delete_appointment(request):
+    return render(request,'doctor_delete_appointment.html')
+def patient_view_doctors(request):
+    return render(request,'patient_view_doctors.html')
+def patient_view_appointment(request):
+    return render(request,'patient_view_appointment.html')
 
 def logged_as_admin(user):
     return user.groups.filter(name='admin').exists()

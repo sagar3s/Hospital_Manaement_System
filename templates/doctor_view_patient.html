@@ -1,11 +1,11 @@
-{% extends 'admin_base.html' %}
+{% extends 'doctor_base.html' %}
 {% load static %}
 {% block title%} Dashboard {% endblock title%}
 {% block content %}
 		<div class="container">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="text-align:center;">
-				<h6 class="panel-title">Patients</h6>
+				<h6 class="panel-title">Total Patient List</h6>
 			  </div>
 			  <table class="table table-hover" id="dev-table">
 				<thead>
@@ -16,8 +16,6 @@
                         <th><h1 style="font-size:15px;">Blood Group</h1></th>
 						<th><h1 style="font-size:15px;">Mobile</h1></th>
                         <th><h1 style="font-size:15px;">Address</h1></th>
-						<th><h1 style="font-size:15px;">Update</h1></th>
-						<th><h1 style="font-size:15px;">Delete</h1></th>
 					</tr>
 				</thead>
 				{% for p in patients %}
@@ -28,8 +26,6 @@
 						<td>{{p.blood_group}}</td>
 						<td>{{p.Phone}}</td>
 						<td>{{p.Address}}</td>
-						<td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
-						<td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 		        {% endfor %}
 				

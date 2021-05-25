@@ -1,0 +1,39 @@
+{% extends 'patient_base.html' %}
+{% load static %}
+{% block title%} Dashboard {% endblock title%}
+{% block content %}
+		<div class="container">
+			<div class="panel panel-primary">
+				<div class="panel-heading" style="text-align:center;">
+				<h6 class="panel-title">Doctors</h6>
+			  </div>
+			  <table class="table table-hover" id="dev-table">
+				<thead>
+					<tr>
+						<th><h1 style="font-size:15px;">Name</h1></th>
+						<th><h1 style="font-size:15px;">Profile Picture</h1></th>
+						<th><h1 style="font-size:15px;">Mobile</h1></th>
+						<th><h1 style="font-size:15px;">Department</h1></th>
+						
+					</tr>
+				</thead>
+				{% for d in doctors %}
+				<tr>
+		  
+				  <td> {{d.get_name}}</td>
+				  <td> 
+					{% if d.profile_pic %}
+					<img src="{% static d.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" />
+					{% endif %}
+					</td>
+				  <td>{{d.contact}}</td>
+				  <td>{{d.department}}</td>
+				  <td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
+				  <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+				{% endfor %}
+				
+			  </table>
+			</div>
+		  </div>
+{% endblock content %}

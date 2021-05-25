@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/sideimg.jpg' %}">
+    <title>Medic Care</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+			<div class="header-left">
+				<a href="{% url 'patient_dashboard' %}" class="logo">
+					<span>Patient Dashboard</span>
+				</a>
+			</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                      <meta name="viewport" content="width=device-width, initial-scale=1">
+                     <style>
+                      img {
+                        border-radius: 50%;
+						margin-left : 19px;
+                          }
+						  h2.Pat1
+						{
+							margin-left : 19px;
+						}
+                     </style>
+                       <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" style="width:70px">
+					   <h2 class="Pat1">Patient1</h2>
+                        <li class="active">
+                            <a href="{% url 'patient_dashboard' %}"><span>Dashboard</span></a>
+                        </li>
+                        <li class="submenu">
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            
+                            <style>
+                            .dropbtn:hover, .dropbtn:focus {
+                                
+                            }.dropdown a:hover {background-color: #ddd;}
+                            .show {display: block;}
+                            .sidenav {
+                                height: 100%;
+                                width: 200px;
+                                position: fixed;
+                                z-index: 1;
+                                top: 0;
+                                left: 0;
+                                background-color: #111;
+                                overflow-x: hidden;
+                                padding-top: 20px;
+                              }
+                              .sidenav a, .dropdown-btn {
+                                padding: 6px 8px 6px 16px;
+                                text-decoration: none;
+                                font-size: 20px;
+                                color: #818181;
+                                display: block;
+                                border: none;
+                                background: none;
+                                width: 100%;
+                                text-align: left;
+                                cursor: pointer;
+                                outline: none;
+                              }
+                              
+                              
+                              .sidenav a:hover, .dropdown-btn:hover {
+                                color: #f1f1f1;
+                              }
+                              
+                              
+                              .main {
+                                margin-left: 200px; 
+                                font-size: 20px; 
+                                padding: 0px 10px;
+                              }
+                              
+                              
+                              .active {
+                                background-color: green;
+                                color: white;
+                              }
+                              
+                              
+                              .dropdown-container {
+                                display: none;
+                                background-color: #262626;
+                                padding-left: 8px;
+                              }
+                              
+                              
+                              .fa-caret-down {
+                                float: right;
+                                padding-right: 8px;
+                              }
+                              
+                              
+                              @media screen and (max-height: 450px) {
+                                .sidenav {padding-top: 15px;}
+                                .sidenav a {font-size: 18px;}
+                              }
+                              </style>
+                                <a href="#"><span> Doctor </span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="{% url 'patient_view_doctors' %}">View Doctors</a></li>
+                                </ul>
+                         </li>
+                        <li class="submenu">
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            
+                            <style>
+                            .dropbtn:hover, .dropbtn:focus {
+                                
+                            }.dropdown a:hover {background-color: #ddd;}
+                            .show {display: block;}
+                            .sidenav {
+                                height: 100%;
+                                width: 200px;
+                                position: fixed;
+                                z-index: 1;
+                                top: 0;
+                                left: 0;
+                                background-color: #111;
+                                overflow-x: hidden;
+                                padding-top: 20px;
+                              }
+                              .sidenav a, .dropdown-btn {
+                                padding: 6px 8px 6px 16px;
+                                text-decoration: none;
+                                font-size: 20px;
+                                color: #818181;
+                                display: block;
+                                border: none;
+                                background: none;
+                                width: 100%;
+                                text-align: left;
+                                cursor: pointer;
+                                outline: none;
+                              }
+                              
+                              
+                              .sidenav a:hover, .dropdown-btn:hover {
+                                color: #f1f1f1;
+                              }
+                              
+                              
+                              .main {
+                                margin-left: 200px; 
+                                font-size: 20px; 
+                                padding: 0px 10px;
+                              }
+                              
+                              
+                              .active {
+                                background-color: green;
+                                color: white;
+                              }
+                              
+                              
+                              .dropdown-container {
+                                display: none;
+                                background-color: #262626;
+                                padding-left: 8px;
+                              }
+                              
+                              
+                              .fa-caret-down {
+                                float: right;
+                                padding-right: 8px;
+                              }
+                              
+                              
+                              @media screen and (max-height: 450px) {
+                                .sidenav {padding-top: 15px;}
+                                .sidenav a {font-size: 18px;}
+                              }
+                              </style>
+                                <a href="#"><span> Appointment </span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="{% url 'patient_view_appointment' %}">View Appointment</a></li>
+                                </ul>
+                      </li>
+                        <li>
+                            <a href="{% url 'logout' %}"><span>Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% block content%}
+    {% endblock content%}
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'js/Chart.bundle.js' %}"></script>
+    <script src="{% static 'js/chart.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

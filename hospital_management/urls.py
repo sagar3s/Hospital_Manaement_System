@@ -37,4 +37,10 @@ urlpatterns = [
     path('admin_discharge_patient', views.admin_discharge_patient,name="admin_discharge_patient"),
     path('admin_view_appointment', views.admin_view_appointment,name="admin_view_appointment"),
     path('admin_approve_appointment', views.admin_approve_appointment,name="admin_approve_appointment"),
+    path('doctor_view_patient', views.doctor_view_patient,name="doctor_view_patient"),
+    path('doctor_view_discharge_patient', views.doctor_view_discharge_patient,name="doctor_view_discharge_patient"),
+    path('doctor_view_appointment', views.doctor_view_appointment,name="doctor_view_appointment"),
+    path('doctor_delete_appointment', views.doctor_delete_appointment,name="doctor_delete_appointment"),
+    path('patient_view_doctors', views.patient_view_doctors,name="patient_view_doctors"),
+    path('patient_view_appointment', views.patient_view_appointment,name="patient_view_appointment"),
 ]
