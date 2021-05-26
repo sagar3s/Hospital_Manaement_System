@@ -12,23 +12,27 @@
 				<thead>
 					<tr>
 						<th><h1 style="font-size:15px;">Name</h1></th>
-						<th><h1 style="font-size:15px;">Profile Picture</h1></th>
-                        <th><h1 style="font-size:15px;">Symptoms</h1></th>
-						<th><h1 style="font-size:15px;">Mobile</h1></th>
                         <th><h1 style="font-size:15px;">Address</h1></th>
+						<th><h1 style="font-size:15px;">Mobile</h1></th>
+                        <th><h1 style="font-size:15px;">Age</h1></th>
+						<th><h1 style="font-size:15px;">Blood Grp</h1></th>
 						<th><h1 style="font-size:15px;">Approve</h1></th>
 						<th><h1 style="font-size:15px;">Reject</h1></th>
 					</tr>
 				</thead>
-				<tr>
-					<td><h1 style="font-size:15px;">Patient1</h1></td>
-					<td> <img src="{% static 'images/doctor.png' %}" alt="Profile Pic" height="20px" width="20px" /></td>
-					<td><h1 style="font-size:15px;">Headache</h1></td>
-                    <td><h1 style="font-size:15px;">984523615</h1></td>
-					<td><h1 style="font-size:15px;">Bharatpur-11</h1></td>
-				  <td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-ok"></span></a></td>
-				  <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
-				</tr>
+					{% for p in patients %}
+					<tr>
+						<td> {{p.get_name}}</td>
+						<td>{{p.Address}}</td>
+						<td>{{p.Phone}}</td>
+						<td>{{p.age}}</td>
+						<td>{{p.blood_group}}</td>
+						
+						
+						<td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-ok"></span></a></td>
+						<td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-remove"></span></a></td>
+					</tr>
+		        {% endfor %}
 				
 			  </table>
 			</div>

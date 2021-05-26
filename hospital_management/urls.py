@@ -43,4 +43,5 @@ urlpatterns = [
     path('doctor_delete_appointment', views.doctor_delete_appointment,name="doctor_delete_appointment"),
     path('patient_view_doctors', views.patient_view_doctors,name="patient_view_doctors"),
     path('patient_view_appointment', views.patient_view_appointment,name="patient_view_appointment"),
+    path('patient_add_appointment', views.patient_add_appointment,name="patient_add_appointment"),
 ]

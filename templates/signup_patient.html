@@ -61,10 +61,14 @@
     <label>Age</label>
     {{form2.age|add_class:"form-control"}}
   </div> 
+  
       <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block"> Register  </button>
       </div>   
       <a href="{% url 'home' %}" class="btn btn-secondary btn-user btn-block">
         Back To Home
-    </a>                                            
+
+    </a>      
+    {{form1.errors}}
+    {{form2.errors}}                                      
   </form>

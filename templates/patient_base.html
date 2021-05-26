@@ -189,8 +189,9 @@
                                 <a href="#"><span> Appointment </span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
                                     <li><a href="{% url 'patient_view_appointment' %}">View Appointment</a></li>
-                                </ul>
-                      </li>
+                                    <li><a href="{% url 'patient_add_appointment' %}">Add Appointment</a></li>
+                                </ul>        
+                        </li>
                         <li>
                             <a href="{% url 'logout' %}"><span>Logout</span></a>
                         </li>
@@ -198,6 +199,7 @@
                 </div>
             </div>
         </div>
+        
     {% block content%}
     {% endblock content%}
     <div class="sidebar-overlay" data-reff=""></div>

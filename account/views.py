@@ -55,11 +55,11 @@ def signup_patient(request):
             user=form1.save()
             user.set_password(user.password)
             user.save()
-            doc_details=form2.save(commit=False)
-            doc_details.user=user
-            doc_details=doc_details.save()
-            doc_grp=Group.objects.get_or_create(name="patient")
-            doc_grp[0].user_set.add(user)
+            pat_details=form2.save(commit=False)
+            pat_details.user=user
+            pat_details=pat_details.save()
+            pat_grp=Group.objects.get_or_create(name="patient")
+            pat_grp[0].user_set.add(user)
             return HttpResponse("Successfully Registered Now login to access Patient Dashboard")
     else:
         form1=forms.PatientUserForm()
@@ -74,7 +74,8 @@ def admin_view_doctors(request):
 def admin_approve_doctor(request):
     return render(request,'admin_approve_doctor.html') 
 def admin_approve_patient(request):
-    return render(request,'admin_approve_patient.html')
+    patients=models.Patient.objects.all().filter(status=False)
+    return render(request,'admin_approve_patient.html',{'patients':patients}) 
 def admin_view_patient(request):
     patients=models.Patient.objects.all().filter(status=True)
     return render(request,'admin_view_patient.html',{'patients':patients}) 
@@ -98,6 +99,8 @@ def patient_view_doctors(request):
     return render(request,'patient_view_doctors.html')
 def patient_view_appointment(request):
     return render(request,'patient_view_appointment.html')
+def patient_add_appointment(request):
+    return render(request,'patient_add_appointment.html')
 
 def logged_as_admin(user):
     return user.groups.filter(name='admin').exists()
@@ -129,7 +132,17 @@ def check_user_type(request):
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_dashboard(request):
-    data={}
+
+    approved_doc_count=models.Doctor.objects.all().filter(status=True).count()
+    pending_doc_count=models.Doctor.objects.all().filter(status=False).count()
+    approved_patient_count=models.Patient.objects.all().filter(status=True).count()
+    pending_patient_count=models.Patient.objects.all().filter(status=False).count()
+    data={
+        'no_of_approved_doctor':approved_doc_count,
+        'no_of_pending_doctor':pending_doc_count,
+        'no_of_approved_patient':approved_patient_count,
+        'no_of_pending_patient': pending_patient_count,
+    }
     return render(request,'admin_dashboard.html',context=data)
 
 @login_required(login_url='login')

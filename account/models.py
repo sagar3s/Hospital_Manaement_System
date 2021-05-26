@@ -37,8 +37,9 @@ class Patient(models.Model):
     gender = models.PositiveSmallIntegerField(
         choices=GENDER_CHOICE, default=3)
     age = models.IntegerField(blank=True, default=None, null=True)
-    blood_group = models.PositiveSmallIntegerField(
-        choices=BLOOD_GROUPS, default=7)
+    blood_group = models.CharField(
+        max_length=50,
+        choices=BLOOD_GROUPS, default='A+')
     status=models.BooleanField(default=False)
     @property
     def get_name(self):
@@ -68,8 +69,6 @@ class Doctor(models.Model):
     def __str__(self):
         return "{}".format(self.user.first_name)
         
-
-
 class Appointment(models.Model):
     patientId=models.PositiveIntegerField(null=True)
     doctorId=models.PositiveIntegerField(null=True)
