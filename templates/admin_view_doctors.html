@@ -30,7 +30,7 @@
 				  <td>{{d.contact}}</td>
 				  <td>{{d.department}}</td>
 				  <td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
-				  <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+				  <td><a class="btn btn-danger btn-xs" href="{% url 'admin_delete_doc' d.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				{% endfor %}
 				

@@ -29,7 +29,7 @@
 						<td>{{p.Phone}}</td>
 						<td>{{p.Address}}</td>
 						<td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
-						<td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+						<td><a class="btn btn-danger btn-xs" href="{% url 'admin_delete_pat' p.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 		        {% endfor %}
 				

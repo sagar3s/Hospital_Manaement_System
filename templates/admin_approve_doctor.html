@@ -19,15 +19,22 @@
 						<th><h1 style="font-size:15px;">Reject</h1></th>
 					</tr>
 				</thead>
+				{% for d in doctors %}
 				<tr>
-					<td><h1 style="font-size:15px;">Doctor1</h1></td>
-					<td> <img src="{% static 'images/doctor.png' %}" alt="Profile Pic" height="20px" width="20px" /></td>
-					<td><h1 style="font-size:15px;">98126561561</h1></td>
-					<td><h1 style="font-size:15px;">Bharatpur-11</h1></td>
-					<td><h1 style="font-size:15px;">Surgery</h1></td>
-				  <td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-ok"></span></a></td>
-				  <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+					
+					<td><h1 style="font-size:15px;">{{d.get_name}}</h1></td>
+					<td>
+						{% if d.profile_pic %}
+						 <img src="{% static d.profile_pic.url %}" alt="Profile Pic" height="20px" width="20px" /></td>
+						 {% endif %}
+					<td><h1 style="font-size:15px;">{{d.contact}}</h1></td>
+					<td><h1 style="font-size:15px;">{{d.address}}</h1></td>
+					<td><h1 style="font-size:15px;">{{d.department}}</h1></td>
+				  <td><a class="btn btn-primary btn-xs" href="{% url 'approve_doctor' d.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+				  <td><a class="btn btn-danger btn-xs" href="{% url 'disapprove_doctor' d.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+				 
 				</tr>
+				{% endfor %}
 				
 			  </table>
 			</div>

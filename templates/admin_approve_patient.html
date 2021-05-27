@@ -27,10 +27,8 @@
 						<td>{{p.Phone}}</td>
 						<td>{{p.age}}</td>
 						<td>{{p.blood_group}}</td>
-						
-						
-						<td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-ok"></span></a></td>
-						<td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-remove"></span></a></td>
+						<td><a class="btn btn-primary btn-xs" href="{% url 'approve_patient' p.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+						<td><a class="btn btn-danger btn-xs" href="{% url 'disapprove_patient' p.id %}"><span class="glyphicon glyphicon-remove"></span></a></td>
 					</tr>
 		        {% endfor %}
 				

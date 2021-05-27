@@ -1,11 +1,10 @@
 from django.conf import settings
 from . import forms,models
-
 from django.contrib.auth.decorators import login_required,user_passes_test
 from datetime import datetime,timedelta,date
 from django.db.models import Sum
 from django.contrib.auth.models import Group
-from django.shortcuts import render,redirect,reverse,HttpResponse
+from django.shortcuts import get_list_or_404, render,redirect,reverse,HttpResponse
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
@@ -41,7 +40,7 @@ def signup_doctor(request):
             doc_details=doc_details.save()
             doc_grp=Group.objects.get_or_create(name="doctor")
             doc_grp[0].user_set.add(user)
-            return HttpResponse("Successfully Registered Now login to access Doctor Dashboard")
+            return redirect('login')
     else:
         form1=forms.DoctorUserForm()
         form2=forms.DoctorSignupForm()
@@ -60,7 +59,7 @@ def signup_patient(request):
             pat_details=pat_details.save()
             pat_grp=Group.objects.get_or_create(name="patient")
             pat_grp[0].user_set.add(user)
-            return HttpResponse("Successfully Registered Now login to access Patient Dashboard")
+            return redirect('login')
     else:
         form1=forms.PatientUserForm()
         form2=forms.PatientSignupForm()
@@ -68,17 +67,10 @@ def signup_patient(request):
 
 def admin_add_appointment(request):
     return render(request,'admin_add_appointment.html')
-def admin_view_doctors(request):
-    doctors=models.Doctor.objects.all().filter(status=True)
-    return render(request,'admin_view_doctors.html',{'doctors':doctors})
-def admin_approve_doctor(request):
-    return render(request,'admin_approve_doctor.html') 
-def admin_approve_patient(request):
-    patients=models.Patient.objects.all().filter(status=False)
-    return render(request,'admin_approve_patient.html',{'patients':patients}) 
-def admin_view_patient(request):
-    patients=models.Patient.objects.all().filter(status=True)
-    return render(request,'admin_view_patient.html',{'patients':patients}) 
+
+
+ 
+
 def admin_discharge_patient(request):
     return render(request,'admin_discharge_patient.html')  
 def admin_view_appointment(request):
@@ -132,19 +124,90 @@ def check_user_type(request):
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_dashboard(request):
-
+    doctors=models.Doctor.objects.all().order_by('-id')
+    patients=models.Patient.objects.all().order_by('-id')
     approved_doc_count=models.Doctor.objects.all().filter(status=True).count()
     pending_doc_count=models.Doctor.objects.all().filter(status=False).count()
     approved_patient_count=models.Patient.objects.all().filter(status=True).count()
     pending_patient_count=models.Patient.objects.all().filter(status=False).count()
     data={
+        'doctors':doctors,
+        'patients':patients,
         'no_of_approved_doctor':approved_doc_count,
         'no_of_pending_doctor':pending_doc_count,
         'no_of_approved_patient':approved_patient_count,
         'no_of_pending_patient': pending_patient_count,
     }
     return render(request,'admin_dashboard.html',context=data)
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def admin_view_doctors(request):
+    doctors=models.Doctor.objects.all().filter(status=True)
+    return render(request,'admin_view_doctors.html',{'doctors':doctors})
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def admin_delete_doc(request,pk):
+    doctors=models.Doctor.objects.get(id=pk)
+    user=models.User.objects.get(id=doctors.user_id)
+    user.delete()
+    doctors.delete()
+    return redirect('admin_view_doctors')
+def admin_approve_doctors(request):
+    doctors=models.Doctor.objects.all().filter(status=False)
+    return render(request,'admin_approve_doctor.html',{'doctors':doctors})
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def approve_doctor(request,pk):
+    doctor=models.Doctor.objects.get(id=pk)
+    doctor.status=True
+    doctor.save()
+    return redirect(reverse('admin_approve_doctors')) 
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def disapprove_doctor(request,pk):
+    doctors=models.Doctor.objects.get(id=pk)
+    user=models.User.objects.get(id=doctors.user_id)
+    user.delete()
+    doctors.delete()
+    return redirect('admin_approve_doctors')
 
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def admin_view_patient(request):
+    patients=models.Patient.objects.all().filter(status=True)
+    return render(request,'admin_view_patient.html',{'patients':patients}) 
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def admin_approve_patient(request):
+    patients=models.Patient.objects.all().filter(status=False)
+    return render(request,'admin_approve_patient.html',{'patients':patients})
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def admin_delete_pat(request,pk):
+    patient=models.Patient.objects.get(id=pk)
+    user=models.User.objects.get(id=patient.user_id)
+    user.delete()
+    patient.delete()
+    return redirect('admin_view_patient')
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def approve_patient(request,pk):
+    patient=models.Patient.objects.get(id=pk)
+    patient.status=True
+    patient.save()
+    return redirect(reverse('admin_approve_patient')) 
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def disapprove_patient(request,pk):
+    patient=models.Patient.objects.get(id=pk)
+    user=models.User.objects.get(id=patient.user_id)
+    user.delete()
+    patient.delete()
+    return redirect('admin_approve_patient')
+
+
+
+#Doctor's Section
 @login_required(login_url='login')
 @user_passes_test(logged_as_doctor)
 def doctor_dashboard(request):
