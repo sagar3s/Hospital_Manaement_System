@@ -1,7 +1,7 @@
 {% extends 'admin_base.html' %}
 {% block title%} Dashboard {% endblock title%}
 {% block content %}
-		<div class="container">
+		<div class="container"  style="padding-left: 111px; margin-top:14px;">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="text-align:center;">
 				<h6 class="panel-title">Appointments</h6>
@@ -12,16 +12,17 @@
 						<th><h1 style="font-size:15px;">Doctor Name</h1></th>
 						<th><h1 style="font-size:15px;">Patient Name</h1></th>
                         <th><h1 style="font-size:15px;">Description</h1></th>
-						<th><h1 style="font-size:15px;">Date</h1></th>
+						<th><h1 style="font-size:15px;">Appointment Date</h1></th>
 					</tr>
 				</thead>
+				{% for appt in appointment %}
 				<tr>
-                    <td><h1 style="font-size:15px;">Doctor1</h1></td>
-					<td><h1 style="font-size:15px;">Patient1</h1></td>
-					<td><h1 style="font-size:15px;">She is having Headache</h1></td>
-					<td><h1 style="font-size:15px;">May 24,2021</h1></td>
+                    <td><h1 style="font-size:15px;">{{appt.doctorName}}</h1></td>
+					<td><h1 style="font-size:15px;">{{appt.patientName}}</h1></td>
+					<td><h1 style="font-size:15px;">{{appt.description}}</h1></td>
+					<td><h1 style="font-size:15px;">{{appt.appt_day}}</h1></td>
 				</tr>
-				
+				{% endfor %}
 			  </table>
 			</div>
 		  </div>

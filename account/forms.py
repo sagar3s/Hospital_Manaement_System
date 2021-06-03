@@ -1,5 +1,6 @@
 from django import forms
-from .models import Patient, Doctor
+from . import models
+from .models import Patient, Doctor, Appointment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 class AdminSigupForm(forms.ModelForm):
@@ -33,3 +34,21 @@ class DoctorSignupForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = ('address','contact','department','profile_pic','gender')
+
+class AppointmentForm(forms.ModelForm):
+    doctorId=forms.ModelChoiceField(queryset=models.Doctor.objects.all().filter(status=True),empty_label="Select Doctor Name", to_field_name="user_id")
+    patientId=forms.ModelChoiceField(queryset=models.Patient.objects.all().filter(status=True),empty_label="Select a patient", to_field_name="user_id")
+    class Meta:
+        model=models.Appointment
+        fields=['description','status','appt_day']
+
+
+class PatientAppointmentForm(forms.ModelForm):
+    doctorId=forms.ModelChoiceField(queryset=models.Doctor.objects.all().filter(status=True),empty_label="Select Doctor Name", to_field_name="user_id")
+    class Meta:
+        model=models.Appointment
+        fields=['description','status',
+        'appt_day']
+
+
+

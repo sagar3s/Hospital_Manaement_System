@@ -1,0 +1,148 @@
+{% extends 'admin_base.html' %} 
+{% load widget_tweaks %}
+{% load static %} 
+{%block title%} Dashboard {% endblock title%} 
+{% block content %}
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #337ab7, #337ab7);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+    .form-cont {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    
+    
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+  </style>
+
+  <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<br /><br />
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div
+    class="container register-form"
+    style="margin-top: 25px; margin-right: 3px; padding-left: 50px; "
+  >
+    <div class="form">
+      <div class="note">
+        <p style="font-size : 18px; font-weight:600;">Add New Patient To Hospital</p>
+      </div>
+      <div class="form-content" style="font-size : 14px; ">
+        <div class="form-row" style="margin-top: -8px;" >
+            <div class="col form-group">
+              <label style="font-weight: 500;">First name </label>
+              {{form1.first_name|add_class:"form-cont"}}
+            </div>
+            
+            <div class="col form-group">
+              <label style="font-weight: 500;">Last name</label>
+              {{form1.last_name|add_class:"form-cont"}}
+            </div>
+            
+          </div>
+          <div class="form-row" >
+            <div class="col form-group">
+                <label style="font-weight: 500;">Username</label>
+                {{form1.username|add_class:"form-cont"}}
+              </div>
+              <div class="col form-group">
+                <label style="font-weight: 500;">Email</label>
+                {{form1.email|add_class:"form-cont"}}
+              </div>           
+          </div>
+          <div class="form-row" >
+            <div class="col form-group">
+                <label>Age</label>
+                {{form2.age|add_class:"form-cont"}}
+              </div> 
+          <div class="col form-group">
+            <label style="font-weight: 500;">Password</label>
+            {{form1.password|add_class:"form-cont"}}
+          </div>
+        </div>
+          <div class="form-row" >
+          <div class="col form-group">
+            <label style="font-weight: 500;">Address</label>
+            {{form2.Address|add_class:"form-cont"}}
+          </div>
+          
+          <div class="col form-group">
+            <label style="font-weight: 500;">Contact</label>
+            {{form2.Phone|add_class:"form-cont"}}
+          </div>
+          </div>
+          <div class="form-row" >
+          <div class="col form-group">
+            <label style="font-weight: 500;">Blood Group</label>
+            <div class="form-group">
+              {{form2.blood_group|add_class:"form-cont"}}
+            </div>
+          </div>
+          <div class="col form-group">
+            <label style="font-weight: 500;">Gender</label>
+            <div class="form-group">{{form2.gender|add_class:"form-cont"}}</div>
+          </div>
+
+          </div>
+          
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" style="font-size: 16px;">
+              Update Details
+            </button>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock content %}

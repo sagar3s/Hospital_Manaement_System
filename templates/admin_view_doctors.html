@@ -2,7 +2,7 @@
 {% load static %}
 {% block title%} Dashboard {% endblock title%}
 {% block content %}
-		<div class="container">
+		<div class="container"  style="padding-left: 111px; margin-top:14px;">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="text-align:center;">
 				<h6 class="panel-title">Doctors</h6>
@@ -29,7 +29,7 @@
 					</td>
 				  <td>{{d.contact}}</td>
 				  <td>{{d.department}}</td>
-				  <td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-edit"></span></a></td>
+				  <td><a class="btn btn-primary btn-xs" href="{% url 'admin_update_doctor' d.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
 				  <td><a class="btn btn-danger btn-xs" href="{% url 'admin_delete_doc' d.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				{% endfor %}

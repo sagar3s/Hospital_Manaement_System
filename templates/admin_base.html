@@ -105,7 +105,7 @@
 								<a href="#"><span> Doctors </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="{% url 'admin_approve_doctors' %}">Manage Doctors</a></li>
-									<li><a href="leaves.html">Add Doctors</a></li>
+									<li><a href="{% url 'admin_add_doctor' %}">Add Doctors</a></li>
 									<li><a href="admin_view_doctors">View Doctors</a></li>
 									
 								</ul>
@@ -183,8 +183,9 @@
 									<a href=""><span>Patients</span> <span class="menu-arrow"></span></a>
 									<ul style="display: none;">
 										<li><a href="{% url 'admin_approve_patient' %}">Approve patients</a></li>
+										<li><a href="{% url 'admin_add_patient' %}">Add Patients</a></li>
 										<li><a href="{% url 'admin_view_patient' %}">View Patients</a></li>
-										<li><a href="holidays.html">Discharge Patients</a></li>
+										
 										
 									</ul>
 								</li>
@@ -261,9 +262,9 @@
 							 </style>
 								<a href="#"><span>Appointments</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="{% url 'admin_add_appointment' %}">Add Appointments</a></li>
-									<li><a href="leaves.html">View Appointments</a></li>
-									<li><a href="holidays.html">Approve Appointments</a></li>
+									<li><a href="{% url 'admin_create_appointment' %}">Add Appointments</a></li>
+									<li><a href="{% url 'admin_view_appointment' %}">View Appointments</a></li>
+									<li><a href="{% url 'admin_approve_appointment' %}">Approve Appointments</a></li>
 									
 								</ul>
 							</li>
