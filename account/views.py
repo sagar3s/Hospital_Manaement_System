@@ -304,7 +304,19 @@ def admin_add_patient(request):
 @user_passes_test(logged_as_admin)
 def admin_approve_appointment(request):
     appointments=models.Appointment.objects.all().filter(status=False)
+
     return render(request,'admin_approve_appointment.html',{'appointments':appointments},)
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
+def approve_appointment(request,pk):
+    appt=models.Appointment.objects.get(id=pk)
+    appt.status=True
+    appt.save()
+    return redirect('admin_approve_appointment')
+def reject_appointment(request,pk):
+    appt=models.Appointment.objects.get(id=pk)
+    appt.delete()
+    return redirect('admin_approve_appointment')
 
 #Doctor's Section
 @login_required(login_url='login')

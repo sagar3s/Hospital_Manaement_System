@@ -25,10 +25,25 @@
 				</a>
 			</div>
         </div>
+
+                    
+		
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
+						<style>
+							img {
+							  border-radius: 50%;
+							  margin-left : 19px;
+								}
+								h2.Pat1
+							  {
+								  margin-left : 19px;
+							  }
+						   </style>
+							 <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" style="width:70px">
+							 <h4 style="text-align: left; margin-left:23px">{{request.user.first_name}} {{request.user.last_name}}</h2>
                         <li class="active">
                             <a href="{% url 'admin_dashboard' %}"><span>Dashboard</span></a>
                         </li>

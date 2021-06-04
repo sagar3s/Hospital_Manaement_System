@@ -40,7 +40,7 @@
           }
                     </style>
                       <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" style="width:70px" >
-                    <h2 class="Doc1">Doctor1</h2>
+                    <h2 class="Doc1">{{request.user.first_name}} {{request.user.last_name}}</h2>
                       <li class="active">
                           <a href="{% url 'doctor_dashboard' %}"><span>Dashboard</span></a>
                       </li>

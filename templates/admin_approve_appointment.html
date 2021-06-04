@@ -4,7 +4,7 @@
 		<div class="container" style="padding-left: 111px; margin-top:14px;">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="text-align:center;">
-				<h6 class="panel-title">Doctors Applied For Registration</h6>
+				<h6 class="panel-title">Pending Appointments</h6>
 			  </div>
 			  <table class="table table-hover" id="dev-table">
 				<thead>
@@ -17,15 +17,16 @@
 						<th><h1 style="font-size:15px;">Reject</h1></th>
 					</tr>
 				</thead>
+				{% for a in appointments %}
 				<tr>
-					<td><h1 style="font-size:15px;">Doctor1</h1></td>
-					<td><h1 style="font-size:15px;">Patient1</h1></td>
-					<td><h1 style="font-size:15px;">She is having Headache</h1></td>
-					<td><h1 style="font-size:15px;">May 24,2021</h1></td>
-				    <td><a class="btn btn-primary btn-xs" href=""><span class="glyphicon glyphicon-ok"></span></a></td>
-				    <td><a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><h1 style="font-size:15px;">{{a.doctorName}}</h1></td>
+					<td><h1 style="font-size:15px;">{{a.patientName}}</h1></td>
+					<td><h1 style="font-size:15px;">{{a.description}}</h1></td>
+					<td><h1 style="font-size:15px;">{{a.appt_day}}</h1></td>
+				    <td><a class="btn btn-primary btn-xs" href="{% url 'approve_appointment' a.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+				    <td><a class="btn btn-danger btn-xs" href="{% url 'reject_appointment' a.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
-				
+				{% endfor %}
 			  </table>
 			</div>
 		</div>
