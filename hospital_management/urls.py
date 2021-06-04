@@ -27,8 +27,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(),name='logout'),
     path('check', views.check_user_type,name='check'),
     path('admin_view', views.admin_dashboard,name="admin_dashboard"),
-    path('doctor_view', views.doctor_dashboard,name="doctor_dashboard"),
-    path('patient_view', views.patient_dashboard,name="patient_dashboard"),
     path('admin_create_appointment', views.admin_create_appointment,name="admin_create_appointment"),
     path('admin_view_doctors', views.admin_view_doctors,name="admin_view_doctors"),
     path('admin_add_doctor', views.admin_add_doctor,name="admin_add_doctor"),
@@ -46,11 +44,14 @@ urlpatterns = [
     path('admin_delete_pat/<int:pk>', views.admin_delete_pat,name="admin_delete_pat"),
     path('admin_view_appointment', views.admin_view_appointment,name="admin_view_appointment"),
     path('admin_approve_appointment', views.admin_approve_appointment,name="admin_approve_appointment"),
+
+    path('doctor_view', views.doctor_dashboard,name="doctor_dashboard"),
     path('doctor_view_patient', views.doctor_view_patient,name="doctor_view_patient"),
-    
     path('doctor_view_appointment', views.doctor_view_appointment,name="doctor_view_appointment"),
     path('doctor_delete_appointment', views.doctor_delete_appointment,name="doctor_delete_appointment"),
+
+    path('patient_view', views.patient_dashboard,name="patient_dashboard"),
     path('patient_view_doctors', views.patient_view_doctors,name="patient_view_doctors"),
     path('patient_view_appointment', views.patient_view_appointment,name="patient_view_appointment"),
-    path('patient_add_appointment', views.patient_add_appointment,name="patient_add_appointment"),
+    path('patient_create_appointment', views.patient_create_appointment,name="patient_create_appointment"),
 ]

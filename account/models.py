@@ -5,9 +5,9 @@ import datetime
 from django.http import request
 
 GENDER_CHOICE = (
-    (1, 'Female'),
-    (2, 'Male'),
-    (3, 'Others'),
+    ('Female', 'Female'),
+    ('Male', 'Male'),
+    ('Others', 'Others'),
 )
 
 DEPARTMENT= (

@@ -75,12 +75,9 @@ def doctor_view_appointment(request):
     return render(request,'doctor_view_appointment.html')
 def doctor_delete_appointment(request):
     return render(request,'doctor_delete_appointment.html')
-def patient_view_doctors(request):
-    return render(request,'patient_view_doctors.html')
+
 def patient_view_appointment(request):
     return render(request,'patient_view_appointment.html')
-def patient_add_appointment(request):
-    return render(request,'patient_add_appointment.html')
 
 def logged_as_admin(user):
     return user.groups.filter(name='admin').exists()
@@ -112,8 +109,8 @@ def check_user_type(request):
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_dashboard(request):
-    doctors=models.Doctor.objects.all().order_by('-id')
-    patients=models.Patient.objects.all().order_by('-id')
+    doctors=models.Doctor.objects.all().order_by('-id')[:4]
+    patients=models.Patient.objects.all().order_by('-id')[:4]
     approved_doc_count=models.Doctor.objects.all().filter(status=True).count()
     pending_doc_count=models.Doctor.objects.all().filter(status=False).count()
     approved_patient_count=models.Patient.objects.all().filter(status=True).count()
@@ -155,7 +152,7 @@ def admin_update_doctor(request,pk):
             doc_details.status=True
             doc_details.save()
             return redirect('admin_view_doctor')
-    return render(request,'admin_update_doctor.html',{'form1':form1,'form2':form2,})
+    return render(request,'admin_update_doctor.html',{'form1':form1,'form2':form2,'doctor':doctor},)
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_update_patient(request,pk):
@@ -175,7 +172,7 @@ def admin_update_patient(request,pk):
             pat_details.status=True
             pat_details.save()
             return redirect('admin_view_patient')
-    return render(request,'admin_update_patient.html',{'form1':form1,'form2':form2})
+    return render(request,'admin_update_patient.html',{'form1':form1,'form2':form2,'patient':patient},)
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_delete_doc(request,pk):
@@ -282,7 +279,8 @@ def admin_add_doctor(request):
         form1=forms.DoctorUserForm()
         form2=forms.DoctorSignupForm()
     return render(request,'admin_add_doctor.html',{'form1': form1, 'form2': form2, })
-
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
 def admin_add_patient(request):
     if request.method == "POST":
         form1=forms.PatientUserForm(request.POST)
@@ -302,7 +300,8 @@ def admin_add_patient(request):
         form1=forms.PatientUserForm()
         form2=forms.PatientSignupForm()
     return render(request,'admin_add_patient.html',{'form1': form1, 'form2': form2, })
-
+@login_required(login_url='login')
+@user_passes_test(logged_as_admin)
 def admin_approve_appointment(request):
     appointments=models.Appointment.objects.all().filter(status=False)
     return render(request,'admin_approve_appointment.html',{'appointments':appointments},)
@@ -311,13 +310,43 @@ def admin_approve_appointment(request):
 @login_required(login_url='login')
 @user_passes_test(logged_as_doctor)
 def doctor_dashboard(request):
+
     data={}
     return render(request,"doctor_dashboard.html",context=data)
+
+
 
 @login_required(login_url='login')
 @user_passes_test(logged_as_patient)
 def patient_dashboard(request):
     data={}
     return render(request,"patient_dashboard.html",context=data)
+
+@login_required(login_url='login')
+@user_passes_test(logged_as_patient)
+def patient_view_doctors(request):
+    doctor=models.Doctor.objects.all().filter(status=True)
+    data={
+        'doctor':doctor
+    }
+    return render(request,'patient_view_doctors.html',context=data)
+@login_required(login_url='login')
+@user_passes_test(logged_as_patient)
+def patient_create_appointment(request):
+    form1=forms.PatientAppointmentForm()
+    patient=models.Patient.objects.get(user_id=request.user.id) 
+    data={'form1':form1,'patient':patient}
+    if request.method=='POST':
+        form1=forms.PatientAppointmentForm(request.POST)
+        if form1.is_valid():
+            appt=form1.save(commit=False)
+            appt.doctorId=request.POST.get('doctorId')
+            appt.patientId=request.user.id 
+            appt.doctorName=models.User.objects.get(id=request.POST.get('doctorId')).first_name
+            appt.patientName=request.user.first_name 
+            appt.status=False
+            appt.save()
+        return HttpResponseRedirect('patient_view_appointment')
+    return render(request,'patient_add_appointment.html',context=data)
 
 
