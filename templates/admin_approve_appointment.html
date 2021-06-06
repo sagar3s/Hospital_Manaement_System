@@ -19,12 +19,12 @@
 				</thead>
 				{% for a in appointments %}
 				<tr>
-					<td><h1 style="font-size:15px;">{{a.doctorName}}</h1></td>
-					<td><h1 style="font-size:15px;">{{a.patientName}}</h1></td>
-					<td><h1 style="font-size:15px;">{{a.description}}</h1></td>
-					<td><h1 style="font-size:15px;">{{a.appt_day}}</h1></td>
+					<td>{{a.doctor.get_name}}</h1></td>
+					<td>{{a.patient.get_name}}</h1></td>
+					<td>{{a.description}}</h1></td>
+					<td>{{a.appt_day}}</h1></td>
 				    <td><a class="btn btn-primary btn-xs" href="{% url 'approve_appointment' a.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
-				    <td><a class="btn btn-danger btn-xs" href="{% url 'reject_appointment' a.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+				    <td><a class="btn btn-danger btn-xs" href="{% url 'reject_appointment' a.id %}"><span class="glyphicon glyphicon-remove"></span></a></td>
 				</tr>
 				{% endfor %}
 			  </table>

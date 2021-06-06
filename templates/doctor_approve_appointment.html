@@ -1,0 +1,36 @@
+{% extends 'doctor_base.html' %}
+{% load static %}
+{% block title%} Dashboard {% endblock title%}
+{% block content %}
+<div class="container" style="padding-left: 111px; margin-top:14px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading" style="text-align:center;">
+      <h6 class="panel-title">Pending Appointments</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th><h1 style="font-size:15px;">Patient Name</h1></th>
+          <th><h1 style="font-size:15px;">Age</h1></th>
+          <th><h1 style="font-size:15px;">Mobile</h1></th>
+          <th><h1 style="font-size:15px;">Symptoms</h1></th>
+          <th><h1 style="font-size:15px;">Appointment Date & Time</h1></th>
+          <th><h1 style="font-size:15px;">Approve</h1></th>
+          <th><h1 style="font-size:15px;">Reject</h1></th>
+        </tr>
+      </thead>
+      {% for a in apptdoctor %}
+      <tr style="font-size: 14px;">
+        <td>{{a.patient.get_name}}</td>
+        <td>{{a.patient.age}}</td>
+        <td>{{a.patient.Phone}}</td>
+        <td>{{a.description}}</td>
+        <td>{{a.appt_day}} ({{a.appt_time_from}}-{{a.appt_time_to}})</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'd_approve_appointment' a.id  %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'd_reject_appointment' a.id  %}"><span class="glyphicon glyphicon-remove"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock content %}

@@ -58,17 +58,23 @@
         <div class="form-content">
           <div class="row">
             <div class="col-md-12">
+              <div  class="form-group"style="font-size: 14px;">
+                {% render_field appt_form.patient class="form-control" style="font-size: 14px;" placeholder="patient" %}
+              </div>
               <div  class="form-group" style="font-size: 14px;">
-                {% render_field appointmentForm.description class="form-control" style="height:120px; font-size: 14px;" placeholder="Explain Patient Symptoms" %}
+                {% render_field appt_form.description class="form-control" style="height:120px; font-size: 14px;" placeholder="Explain Patient Symptoms" %}
               </div>
               <div class="form-group" style="font-size: 14px;">
-                {% render_field appointmentForm.doctorId class="form-control" style="font-size: 14px;" placeholder="doctor" %}
-              </div>
-              <div  class="form-group"style="font-size: 14px;">
-                {% render_field appointmentForm.patientId class="form-control" style="font-size: 14px;" placeholder="patient" %}
+                {% render_field appt_form.doctor class="form-control" style="font-size: 14px;" placeholder="doctor" %}
               </div>
               <div class="form-group">
-                {% render_field appointmentForm.appt_day type="date" class="form-control" style="font-size: 14px;" placeholder="Date of Appointment" %}
+                {% render_field appt_form.appt_day type="date" class="form-control" style="font-size: 14px;" placeholder="Date of Appointment" %}
+              </div>
+              <div class="form-group">
+                {% render_field appt_form.appt_time_from type="time" class="form-control" style="font-size: 14px;" placeholder="Apointment Time From" %}
+              </div>
+              <div class="form-group">
+                {% render_field appt_form.appt_time_to type="time" class="form-control" style="font-size: 14px;" placeholder="Appointment Time To" %}
               </div>
   
             </div>

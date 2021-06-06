@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/sideimg.jpg' %}">
-    <title>Medic Care</title>
+    <title>Medic Care | Patient Dashoard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
@@ -21,6 +21,7 @@
 					<span>Patient Dashboard</span>
 				</a>
 			</div>
+      <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
         </div>
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
@@ -37,7 +38,7 @@
 							margin-left : 19px;
 						}
                      </style>
-                       <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" style="width:70px">
+                       <img src="/media/{{patient.profile_pic}}" alt="Avatar" style="width:70px">
 					   <h2 class="Pat1">{{request.user.first_name}} {{request.user.last_name}}</h2>
                         <li class="active">
                             <a href="{% url 'patient_dashboard' %}"><span>Dashboard</span></a>
@@ -115,7 +116,8 @@
                                 <a href="#"><span> Doctor </span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
                                     <li><a href="{% url 'patient_view_doctors' %}">View Doctors</a></li>
-                                </ul>
+                                  <li><a href="{% url 'patient_view_prescription' %}">View Prescription</a></li>
+                              </ul>
                          </li>
                         <li class="submenu">
                             <meta name="viewport" content="width=device-width, initial-scale=1">

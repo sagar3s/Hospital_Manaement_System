@@ -23,7 +23,7 @@
 				{% for p in patients %}
 					<tr>
 						<td> {{p.get_name}}</td>
-						<td> <img src="" alt="Profile Pic" height="40px" width="40px" /></td>
+						<td> <img src="/media/{{p.profile_pic}}" alt="Profile Pic" height="40px" width="40px" /></td>
 						<td>{{p.age}}</td>
 						<td>{{p.blood_group}}</td>
 						<td>{{p.Phone}}</td>

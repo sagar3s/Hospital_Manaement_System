@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from account import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib.auth.views import LoginView,LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,10 +53,19 @@ urlpatterns = [
     path('doctor_view', views.doctor_dashboard,name="doctor_dashboard"),
     path('doctor_view_patient', views.doctor_view_patient,name="doctor_view_patient"),
     path('doctor_view_appointment', views.doctor_view_appointment,name="doctor_view_appointment"),
-    path('doctor_delete_appointment', views.doctor_delete_appointment,name="doctor_delete_appointment"),
+    path('doctor_approve_appointment', views.doctor_approve_appointment,name="doctor_approve_appointment"),
+    path('doctor_add_prescription', views.doctor_add_prescription,name="doctor_add_prescription"),
+    path('doctor_manage_prescription', views.doctor_manage_prescription,name="doctor_manage_prescription"),
+    path('d_delete_prescription/<int:pk>', views.d_delete_prescription,name="d_delete_prescription"),
+    path('d_approve_appointment/<int:pk>', views.d_approve_appointment,name="d_approve_appointment"),
+    path('d_reject_appointment/<int:pk>', views.d_reject_appointment,name="d_reject_appointment"),
+
 
     path('patient_view', views.patient_dashboard,name="patient_dashboard"),
     path('patient_view_doctors', views.patient_view_doctors,name="patient_view_doctors"),
     path('patient_view_appointment', views.patient_view_appointment,name="patient_view_appointment"),
     path('patient_create_appointment', views.patient_create_appointment,name="patient_create_appointment"),
-]
+    path('patient_view_prescription', views.patient_view_prescription,name="patient_view_prescription"),
+
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 
+

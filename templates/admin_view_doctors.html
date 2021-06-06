@@ -23,9 +23,7 @@
 		  
 				  <td> {{d.get_name}}</td>
 				  <td> 
-					{% if d.profile_pic %}
-					<img src="{% static d.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" />
-					{% endif %}
+					<img src="/media/{{d.profile_pic}}" alt="Profile Pic" height="40px" width="40px" />
 					</td>
 				  <td>{{d.contact}}</td>
 				  <td>{{d.department}}</td>

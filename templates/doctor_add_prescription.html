@@ -1,0 +1,78 @@
+{% extends 'doctor_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title%} Dashboard {% endblock title%}
+{% block content %}
+<head>
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+  
+      .note {
+        text-align: center;
+        height: 80px;
+        background: -webkit-linear-gradient(left, #337ab7, #337ab7);
+        color: #fff;
+        font-weight: bold;
+        line-height: 80px;
+      }
+  
+      .form-content {
+        padding: 5%;
+        border: 1px solid #ced4da;
+        margin-bottom: 2%;
+      }
+  
+      .form-control {
+        border-radius: 1.5rem;
+      }
+  
+      .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+      }
+  
+      .menu {
+        top: 50px;
+      }
+    </style>
+  
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <br><br>
+<form method="POST">
+    {% csrf_token %}
+    <div class="container register-form" style="margin-top: 40px; margin-right : 3px; padding-left: 197px; ">
+      <div class="form">
+        <div class="note">
+          <p style="font-size: 18px; font-weight:500;">Create Prescription</p>
+        </div>
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-12">             
+              <div  class="form-group" style="font-size: 14px;">
+                {% render_field form1.patient class="form-control" style="font-size: 14px;" placeholder="" %}
+              </div>
+              <div class="form-group" style="font-size: 14px;">
+                {% render_field form1.symptom class="form-control" style="font-size: 14px;" placeholder="Patient Symptom" %}
+              </div>
+              <div  class="form-group"style="font-size: 14px;">
+                {% render_field form1.prescription class="form-control" style="font-size: 14px;" placeholder="Write Down the Prescription" %}
+              </div>
+  
+            </div>
+          </div>
+          <button type="submit" style="font-size:17px;" class="btnSubmit">Create</button>
+        </div>        
+      </div>
+    </div>
+  </form>
+{% endblock content %}

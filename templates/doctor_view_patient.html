@@ -2,10 +2,10 @@
 {% load static %}
 {% block title%} Dashboard {% endblock title%}
 {% block content %}
-		<div class="container">
+		<div class="container" style="padding-left: 111px; margin-top:14px;">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="text-align:center;">
-				<h6 class="panel-title">Total Patient List</h6>
+				<h6 class="panel-title">Total Patients of {{request.user.first_name}} {{request.user.last_name}}</h6>
 			  </div>
 			  <table class="table table-hover" id="dev-table">
 				<thead>
@@ -19,13 +19,13 @@
 					</tr>
 				</thead>
 				{% for p in patients %}
-					<tr>
-						<td> {{p.get_name}}</td>
-						<td> <img src="" alt="Profile Pic" height="40px" width="40px" /></td>
-						<td>{{p.age}}</td>
-						<td>{{p.blood_group}}</td>
-						<td>{{p.Phone}}</td>
-						<td>{{p.Address}}</td>
+					<tr style="font-size:14px ;">
+						<td> {{p.patient.get_name}}</td>
+						<td> <img src="/media/{{p.patient.profile_pic}}" alt="Profile Pic" height="40px" width="40px" /></td>
+						<td>{{p.patient.age}}</td>
+						<td>{{p.patient.blood_group}}</td>
+						<td>{{p.patient.Phone}}</td>
+						<td>{{p.patient.Address}}</td>
 					</tr>
 		        {% endfor %}
 
