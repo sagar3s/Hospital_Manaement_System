@@ -392,7 +392,7 @@ def doctor_add_prescription(request):
 def doctor_manage_prescription(request):
     docid=models.Doctor.objects.get(user_id=request.user.id)
     precs=models.Prescription.objects.all().filter(doctor_id=docid.id)
-    doctor=models.Doctor.objects.get(id=doc_id.id)
+    doctor=models.Doctor.objects.get(id=docid.id)
     data={
         'presc':precs,
         'doctor':doctor,
