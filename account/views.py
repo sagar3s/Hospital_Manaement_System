@@ -10,6 +10,8 @@ from django.shortcuts import get_list_or_404, render,redirect,reverse,HttpRespon
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
+
 # Create your views here.
 def homepage(request):
     if request.user.is_authenticated:
@@ -42,6 +44,7 @@ def signup_doctor(request):
             doc_details=doc_details.save()
             doc_grp=Group.objects.get_or_create(name="doctor")
             doc_grp[0].user_set.add(user)
+            messages.success(request,"Successfully Registered the account please login to access your dashboard")
             return redirect('login')
     else:
         form1=forms.DoctorUserForm()
@@ -61,6 +64,7 @@ def signup_patient(request):
             pat_details=pat_details.save()
             pat_grp=Group.objects.get_or_create(name="patient")
             pat_grp[0].user_set.add(user)
+            messages.success(request,"Successfully Registered the account please login to access your dashboard")
             return redirect('login')
     else:
         form1=forms.PatientUserForm()
@@ -82,13 +86,13 @@ def check_user_type(request):
     elif logged_as_doctor(request.user):
         account_is_approved=models.Doctor.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return HttpResponseRedirect('doctor_view')
+            return redirect('doctor_view')
         else:
             return render(request,'pending.html')
     elif logged_as_patient(request.user):
         account_is_approved=models.Patient.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return HttpResponseRedirect('patient_view')
+            return redirect('patient_view')
         else:
             return render(request,'pending.html')
     else:

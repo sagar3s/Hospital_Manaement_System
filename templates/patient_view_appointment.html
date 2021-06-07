@@ -19,7 +19,7 @@
         </thead>
         {% for a in appointment %}
         <tr style="font-size: 14px;">
-          <td> {{a.doctor.get_name}}</td>
+          <td>Dr. {{a.doctor.get_name}}</td>
           <td>{{a.doctor.department}}</td>
           <td>{{a.description}}</td>
           <td>{{a.appt_day}} ({{a.appt_time_from}}-{{a.appt_time_to}})</td>

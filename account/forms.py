@@ -36,15 +36,25 @@ class DoctorSignupForm(forms.ModelForm):
         fields = ('address','contact','department','profile_pic','gender')
 
 class admin_appointment(forms.ModelForm):
+    def __init__(self,*args,**kwargs):
+        super (admin_appointment,self ).__init__(*args,**kwargs) 
+        self.fields['patient'].queryset = Patient.objects.filter(status=True)
+        self.fields['doctor'].queryset = Doctor.objects.filter(status=True)
     class Meta:
         model=models.Appointment
         fields='__all__'
 
 class patient_appointment(forms.ModelForm):
+    def __init__(self,*args,**kwargs):
+        super (patient_appointment,self ).__init__(*args,**kwargs) 
+        self.fields['doctor'].queryset = Doctor.objects.filter(status=True)
     class Meta:
         model=models.Appointment
         fields=['doctor','description','status','appt_day','appt_time_from','appt_time_to']
 class PrescriptionForm(forms.ModelForm):
+    def __init__(self,*args,**kwargs):
+        super (PrescriptionForm,self ).__init__(*args,**kwargs) 
+        self.fields['patient'].queryset = Patient.objects.filter(status=True)
     class Meta:
         model = Prescription
         fields = ['patient','symptom','prescription']

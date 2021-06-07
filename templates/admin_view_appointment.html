@@ -23,7 +23,7 @@
 					<td>{{appt.doctor.department}}</h1></td>
 					<td>{{appt.patient.get_name}}</h1></td>
 					<td>{{appt.description}}</h1></td>
-					<td>{{appt.appt_day}}</h1></td>
+					<td>{{a.appt_day}} ({{a.appt_time_from}}-{{a.appt_time_to}})</td>
 				</tr>
 				{% endfor %}
 			  </table>
