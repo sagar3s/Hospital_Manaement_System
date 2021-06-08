@@ -11,6 +11,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from .filters import appointment_filter,pending_appointment_filter,doctor_filter,doc_view_appt,presc_filt,pat_view_appt
 
 # Create your views here.
 def homepage(request):
@@ -34,7 +35,7 @@ def signup_admin(request):
 def signup_doctor(request):
     if request.method == "POST":
         form1=forms.DoctorUserForm(request.POST)
-        form2=forms.DoctorSignupForm(request.POST, request.FILES)
+        form2=forms.DoctorSignupForm(request.POST,request.FILES)
         if form1.is_valid() and form2.is_valid():
             user=form1.save()
             user.set_password(user.password)
@@ -54,7 +55,7 @@ def signup_doctor(request):
 def signup_patient(request):
     if request.method == "POST":
         form1=forms.PatientUserForm(request.POST)
-        form2=forms.PatientSignupForm(request.POST, request.FILES)
+        form2=forms.PatientSignupForm(request.POST,request.FILES)
         if form1.is_valid() and form2.is_valid():
             user=form1.save()
             user.set_password(user.password)
@@ -86,13 +87,13 @@ def check_user_type(request):
     elif logged_as_doctor(request.user):
         account_is_approved=models.Doctor.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return redirect('doctor_view')
+            return redirect('doctor_dashboard')
         else:
             return render(request,'pending.html')
     elif logged_as_patient(request.user):
         account_is_approved=models.Patient.objects.all().filter(user_id=request.user.id,status=True)
         if account_is_approved:
-            return redirect('patient_view')
+            return redirect('patient_dashboard')
         else:
             return render(request,'pending.html')
     else:
@@ -102,8 +103,15 @@ def check_user_type(request):
 def doctor_view_patient(request):
     doc_id=models.Doctor.objects.get(user_id=request.user.id)
     doctor=models.Doctor.objects.get(id=doc_id.id)
-    appointment=models.Appointment.objects.all().filter(doctor_id=doc_id.id,status=True)
-    return render(request,'doctor_view_patient.html',{'patients':appointment,'doctor':doctor})
+    presc=models.Prescription.objects.all().filter(doctor_id=doc_id.id)
+    pat_id=[]
+    for a in presc:
+        pat_id.append(a.patient_id)
+    patint_id=set(pat_id)
+    p_id=list(patint_id)
+    patients=models.Patient.objects.all().filter(id__in=p_id)
+
+    return render(request,'doctor_view_patient.html',{'patients':patients,'doctor':doctor})
 
 #COntrol Admin Dashboard
 @login_required(login_url='login')
@@ -132,7 +140,9 @@ def admin_dashboard(request):
 @user_passes_test(logged_as_admin)
 def admin_view_doctors(request):
     doctors=models.Doctor.objects.all().filter(status=True)
-    return render(request,'admin_view_doctors.html',{'doctors':doctors})
+    doctor_filt=doctor_filter(request.GET,queryset=doctors)
+    doctors=doctor_filt.qs
+    return render(request,'admin_view_doctors.html',{'doctors':doctors,'doctor_filt':doctor_filt})
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def admin_update_doctor(request,pk):
@@ -185,7 +195,9 @@ def admin_delete_doc(request,pk):
     return redirect('admin_view_doctors')
 def admin_approve_doctors(request):
     doctors=models.Doctor.objects.all().filter(status=False)
-    return render(request,'admin_approve_doctor.html',{'doctors':doctors})
+    doctor_filt=doctor_filter(request.GET,queryset=doctors)
+    doctors=doctor_filt.qs
+    return render(request,'admin_approve_doctor.html',{'doctors':doctors,'doctor_filt':doctor_filt},)
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def approve_doctor(request,pk):
@@ -253,7 +265,9 @@ def admin_create_appointment(request):
 @user_passes_test(logged_as_admin)
 def admin_view_appointment(request):
     appointment=models.Appointment.objects.all().filter(status=True)
-    return render(request,'admin_view_appointment.html',{'appointment':appointment}) 
+    appt_filter=appointment_filter(request.GET,queryset=appointment)
+    appointment=appt_filter.qs
+    return render(request,'admin_view_appointment.html',{'appointment':appointment,'appt_filter':appt_filter,}) 
 
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
@@ -301,8 +315,9 @@ def admin_add_patient(request):
 @user_passes_test(logged_as_admin)
 def admin_approve_appointment(request):
     appointments=models.Appointment.objects.all().filter(status=False)
-
-    return render(request,'admin_approve_appointment.html',{'appointments':appointments},)
+    appt_filter=pending_appointment_filter(request.GET,queryset=appointments)
+    appointments=appt_filter.qs
+    return render(request,'admin_approve_appointment.html',{'appointments':appointments,'appt_filter':appt_filter},)
 @login_required(login_url='login')
 @user_passes_test(logged_as_admin)
 def approve_appointment(request,pk):
@@ -340,11 +355,14 @@ def doctor_dashboard(request):
 def doctor_view_appointment(request):
     doc_id=models.Doctor.objects.get(user_id=request.user.id)
     apptdoctor=models.Appointment.objects.all().filter(doctor_id=doc_id.id,status=True)
+    appt_filt=doc_view_appt(request.GET,queryset=apptdoctor)
+    apptdoctor=appt_filt.qs
     doctor=models.Doctor.objects.get(id=doc_id.id)
     data={
          
          'apptdoctor':apptdoctor,
          'doctor':doctor,
+         'appt_filt':appt_filt
     }
     return render(request,'doctor_view_appointment.html',context=data)
 @login_required(login_url='login')
@@ -435,11 +453,12 @@ def patient_view_doctors(request):
     doctor=models.Doctor.objects.all().filter(status=True)
     pat_id=models.Patient.objects.get(user_id=request.user.id)
     patient=models.Patient.objects.get(id=pat_id.id)
-    
-    
+    doctor_filt=doctor_filter(request.GET,queryset=doctor)
+    doctor=doctor_filt.qs
     data={
         'doctor':doctor,
         'patient':patient,
+        'doctor_filt':doctor_filt
     }
     return render(request,'patient_view_doctors.html',context=data)
 @login_required(login_url='login')
@@ -467,17 +486,22 @@ def patient_view_appointment(request):
     patid=models.Patient.objects.get(user_id=request.user.id)
     patient=models.Patient.objects.get(id=patid.id)
     appt=models.Appointment.objects.all().filter(patient_id=patid.id)
-    return render(request,'patient_view_appointment.html',{'appointment':appt,'patient':patient})
+    pat_appt=pat_view_appt(request.GET,queryset=appt)
+    appt=pat_appt.qs
+
+    return render(request,'patient_view_appointment.html',{'appointment':appt,'patient':patient,'pat_view_appt':pat_view_appt})
 @login_required(login_url='login')
 @user_passes_test(logged_as_patient)
 def patient_view_prescription(request):
     patID=models.Patient.objects.get(user_id=request.user.id)
     presc_pat=models.Prescription.objects.all().filter(patient_id=patID.id)
     patient=models.Patient.objects.get(id=patID.id)
-    print(presc_pat)
+    presc=presc_filt(request.GET,queryset=presc_pat)
+    presc_pat=presc.qs
     data={
         'presc_pat':presc_pat,
-        'patient':patient
+        'patient':patient,
+        'presc_filt':presc_filt,
     }
     return render(request,'patient_view_prescription.html',context=data)
 

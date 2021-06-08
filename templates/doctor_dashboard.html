@@ -32,7 +32,7 @@
                     </div>
                 </div>
 				<div class="container" style="margin-top: -51px;margin-left: -123px;padding-right: 122px;">
-					<div class="panel panel-primary">
+					<div class="panel panel-primary" style="border: none;">
 					  <div class="panel-heading" style="text-align:center;">
 						<h6 class="panel-title">Recent Patients Who Requested For Appointment</h6>
 					  </div>
@@ -41,8 +41,7 @@
 							<tr>
 								<th><h1 style="font-size:15px;">Name</h1></th>
 								<th><h1 style="font-size:15px;">Profile Picture</h1></th>
-								<th><h1 style="font-size:15px;">Age</h1></th>
-								<th><h1 style="font-size:15px;">Blood Group</h1></th>
+								<th><h1 style="font-size:15px;">Appointment Date</h1></th>
 								<th><h1 style="font-size:15px;">Mobile</h1></th>
 								<th><h1 style="font-size:15px;">Address</h1></th>
 								<th><h1 style="font-size:15px;">Status</h1></th>
@@ -52,8 +51,7 @@
 							<tr>
 								<td> {{p.patient.get_name}}</td>
 								<td> <img src="/media/{{p.patient.profile_pic}}" alt="Profile Pic" height="40px" width="40px" /></td>
-								<td>{{p.patient.age}}</td>
-								<td>{{p.patient.blood_group}}</td>
+								<td>{{p.appt_day}} ({{p.appt_time_from}}-{{p.appt_time_to}})</td>
 								<td>{{p.patient.Phone}}</td>
 								<td>{{p.patient.Address}}</td>
 								{%if p.status%}

@@ -3,7 +3,15 @@
 {% block title%} Dashboard {% endblock title%}
 {% block content %}
 <div class="container"  style="padding-left: 111px; margin-top:14px;">
-    <div class="panel panel-primary">
+  <form method="GET" style="
+    margin-top: 57px;
+    padding-left: 123px;
+    font-size:13px;
+">
+		{{pat_view_appt.form}}
+		<button class="btn btn-primary" style="font-size: 11px;background-color: #337ab7;" type="submit">Search</button>
+	</form>
+  <div class="panel panel-primary" style="border: none; font-size: 14px; margin-top:1px;">
       <div class="panel-heading" style="text-align:center;">
         <h6 class="panel-title">Your Appointments List</h6>
       </div>

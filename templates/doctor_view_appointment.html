@@ -3,7 +3,11 @@
 {% block title%} Dashboard {% endblock title%}
 {% block content %}
 <div class="container" style="padding-left: 111px; margin-top:14px;">
-    <div class="panel panel-primary">
+  <div class="panel panel-primary" style="border: none;">
+    <form method="GET">
+      {{appt_filt.form}}
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
       <div class="panel-heading" style="text-align:center;">
         <h6 class="panel-title">View Appointments</h6>
       </div>
